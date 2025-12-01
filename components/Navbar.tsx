@@ -35,7 +35,7 @@ const SCROLL_THRESHOLD = 20;
 /**
  * Navbar Component
  * Provides navigation with smooth scrolling and responsive mobile menu
- * 
+ *
  * @returns The rendered navigation bar
  */
 const Navbar: React.FC = () => {
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
   // Optimized scroll listener for navbar background styling
   useEffect(() => {
     let ticking = false;
-    
+
     const handleScroll = (): void => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
         ticking = true;
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
           }
         });
       },
-      { threshold: 0.3, rootMargin: "-10% 0px -50% 0px" } 
+      { threshold: 0.2, rootMargin: '-20% 0px -35% 0px' }
     );
 
     links.forEach((link) => {
@@ -99,36 +99,40 @@ const Navbar: React.FC = () => {
     closed: {
       opacity: 0,
       height: 0,
-      transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1], when: "afterChildren" }
+      transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1], when: 'afterChildren' },
     },
     open: {
       opacity: 1,
-      height: "auto",
-      transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1], when: "beforeChildren", staggerChildren: 0.05 }
-    }
+      height: 'auto',
+      transition: {
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
+        when: 'beforeChildren',
+        staggerChildren: 0.05,
+      },
+    },
   };
 
   const mobileLinkVariants: Variants = {
     closed: { opacity: 0, y: -10 },
-    open: { opacity: 1, y: 0 }
+    open: { opacity: 1, y: 0 },
   };
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 z-50 w-full transition-all duration-500 border-b ${
-        isScrolled 
-          ? "bg-white/80 backdrop-blur-xl border-gray-200/50 py-2" 
-          : "bg-transparent border-transparent py-4"
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-xl border-gray-200/50 py-2'
+          : 'bg-transparent border-transparent py-4'
       }`}
       role="navigation"
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14">
-          
           {/* Logo */}
-          <div 
-            className="flex-shrink-0 flex items-center cursor-pointer" 
+          <div
+            className="flex-shrink-0 flex items-center cursor-pointer"
             onClick={() => scrollToSection('home')}
             role="button"
             tabIndex={0}
@@ -136,15 +140,17 @@ const Navbar: React.FC = () => {
             aria-label="Go to home section"
           >
             <div className="text-lg font-bold tracking-tight text-black flex items-center gap-2.5 group">
-              <motion.span 
-                whileHover={{ rotate: 90, scale: 1.1, backgroundColor: "#000" }}
+              <motion.span
+                whileHover={{ rotate: 90, scale: 1.1, backgroundColor: '#000' }}
                 whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
                 className="bg-black text-white w-9 h-9 flex items-center justify-center rounded-lg text-xs font-bold shadow-md"
               >
                 JC
               </motion.span>
-              <span className="group-hover:text-gray-600 transition-colors tracking-tighter uppercase text-sm font-bold">Dalupang.</span>
+              <span className="group-hover:text-gray-600 transition-colors tracking-tighter uppercase text-sm font-bold">
+                Dalupang.
+              </span>
             </div>
           </div>
 
@@ -159,14 +165,14 @@ const Navbar: React.FC = () => {
                   role="menuitem"
                   aria-current={isActive ? 'page' : undefined}
                   className={`relative px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-colors duration-300 outline-none ${
-                    isActive ? "text-black" : "text-gray-400 hover:text-black"
+                    isActive ? 'text-black' : 'text-gray-400 hover:text-black'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="navbar-active"
                       className="absolute inset-0 bg-gray-100/80 rounded-full -z-10"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                     />
                   )}
                   <span className="relative z-10">{link.label}</span>
@@ -183,15 +189,25 @@ const Navbar: React.FC = () => {
               className="p-2 rounded-lg text-black hover:bg-gray-100 focus:outline-none transition-colors"
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
-                  <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                  >
                     <X size={24} strokeWidth={1.5} />
                   </motion.div>
                 ) : (
-                  <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                  >
                     <Menu size={24} strokeWidth={1.5} />
                   </motion.div>
                 )}
