@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Projects Page Component
+ * @description Displays portfolio projects with images, descriptions, and links
+ * Features animated cards with hover effects and loading skeletons
+ */
+
 import React, { useState, useEffect } from 'react';
 import { Project } from '../types';
 import { ExternalLink, Github, Search, ArrowUpRight } from 'lucide-react';
@@ -5,10 +11,15 @@ import { motion, Variants } from 'framer-motion';
 import { projects as projectsData } from '../data';
 
 interface ProjectsProps {
+  /** Section ID for navigation */
   id: string;
 }
 
-const ProjectSkeleton = () => (
+/**
+ * Project Skeleton Component
+ * Displays a loading placeholder while projects are being fetched
+ */
+const ProjectSkeleton: React.FC = () => (
   <div className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden h-full shadow-sm">
     <div className="aspect-video bg-gray-100 animate-pulse" />
     <div className="p-6 flex-grow space-y-4">
@@ -22,21 +33,31 @@ const ProjectSkeleton = () => (
   </div>
 );
 
+/**
+ * Projects Component
+ * Displays a grid of portfolio projects with animations
+ * 
+ * @param props - Component props
+ * @param props.id - Section ID for navigation scrolling
+ * @returns The rendered projects section
+ */
 const Projects: React.FC<ProjectsProps> = ({ id }) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate network delay but faster for perceived performance
-    const fetchProjects = async () => {
+    // Simulate async data loading (could be replaced with actual API call)
+    const fetchProjects = async (): Promise<void> => {
       setLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 500)); 
+      // Short delay for smoother transition
+      await new Promise(resolve => setTimeout(resolve, 300)); 
       setProjects(projectsData);
       setLoading(false);
     };
     fetchProjects();
   }, []);
 
+  // Animation variants for staggered container
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -45,13 +66,14 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
     }
   };
 
+  // Animation variants for individual items
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50, damping: 20 } }
   };
 
   return (
-    <section id={id} className="py-32 relative">
+    <section id={id} className="py-32 relative" aria-label="Projects section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="space-y-4 border-b border-gray-200/60 pb-10">
           <h2 className="text-5xl font-extrabold tracking-tighter text-black">Selected Work</h2>

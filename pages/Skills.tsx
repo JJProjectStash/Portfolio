@@ -1,21 +1,40 @@
+/**
+ * @fileoverview Skills Page Component
+ * @description Displays technical skills organized by category with animated cards
+ * Features icon mapping, hover effects, and staggered animations
+ */
+
 import React from 'react';
 import { Code2, Layout as LayoutIcon, Database, Terminal } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { skillsData } from '../data';
 
 interface SkillsProps {
+  /** Section ID for navigation */
   id: string;
 }
 
-// Map string icon names to components
-const iconMap: { [key: string]: React.ReactNode } = {
+/**
+ * Icon mapping for skill categories
+ * Maps string icon names from data to actual React components
+ */
+const iconMap: Record<string, React.ReactNode> = {
   "Layout": <LayoutIcon className="w-6 h-6 text-white" />,
   "Database": <Database className="w-6 h-6 text-white" />,
   "Terminal": <Terminal className="w-6 h-6 text-white" />,
   "Code2": <Code2 className="w-6 h-6 text-white" />
 };
 
+/**
+ * Skills Component
+ * Displays technical skills grouped by category with animated interactions
+ * 
+ * @param props - Component props
+ * @param props.id - Section ID for navigation scrolling
+ * @returns The rendered skills section
+ */
 const Skills: React.FC<SkillsProps> = ({ id }) => {
+  // Animation variants for staggered container
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -24,13 +43,14 @@ const Skills: React.FC<SkillsProps> = ({ id }) => {
     }
   };
 
+  // Animation variants for individual cards
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
   };
 
   return (
-    <section id={id} className="py-32 relative">
+    <section id={id} className="py-32 relative" aria-label="Skills section">
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="space-y-4 border-b border-gray-200/60 pb-10">
           <h2 className="text-5xl font-extrabold tracking-tighter text-black">Skills & Expertise</h2>

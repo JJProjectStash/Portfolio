@@ -1,21 +1,43 @@
-import React from 'react';
+/**
+ * @fileoverview Home Page Component (Hero Section)
+ * @description The landing section of the portfolio featuring an animated hero
+ * with introduction, call-to-action buttons, and decorative elements
+ */
+
+import React, { useCallback } from 'react';
 import { ArrowRight, Code, Github, Linkedin, Terminal, MousePointer2 } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { personalInfo } from '../data';
 
 interface HomeProps {
+  /** Section ID for navigation */
   id: string;
 }
 
+/**
+ * Home Component (Hero Section)
+ * The main landing area of the portfolio with animated introduction
+ * 
+ * @param props - Component props
+ * @param props.id - Section ID for navigation scrolling
+ * @returns The rendered hero section
+ */
 const Home: React.FC<HomeProps> = ({ id }) => {
-  const scrollToProjects = () => {
+  /**
+   * Scrolls to the projects section
+   */
+  const scrollToProjects = useCallback((): void => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
   
-  const scrollToContact = () => {
+  /**
+   * Scrolls to the contact section
+   */
+  const scrollToContact = useCallback((): void => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
 
+  // Animation variants for staggered text reveal
   const textVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
@@ -30,10 +52,14 @@ const Home: React.FC<HomeProps> = ({ id }) => {
   };
 
   return (
-    <section id={id} className="relative min-h-screen flex flex-col justify-center py-20 overflow-hidden">
+    <section 
+      id={id} 
+      className="relative min-h-screen flex flex-col justify-center py-20 overflow-hidden"
+      aria-label="Hero section"
+    >
       
       {/* Background Decorative Elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <motion.div 
           animate={{ 
             rotate: [0, 360],
@@ -65,19 +91,20 @@ const Home: React.FC<HomeProps> = ({ id }) => {
               viewport={{ once: true }}
               className="space-y-8"
             >
+              {/* Availability Badge */}
               <motion.div 
                 custom={0}
                 variants={textVariants}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-gray-200 text-sm font-bold text-gray-800 shadow-sm hover:border-gray-300 transition-colors"
               >
-                <span className="relative flex h-2.5 w-2.5">
+                <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                 </span>
                 <span className="tracking-wide text-xs uppercase font-bold">Available for Work</span>
               </motion.div>
               
-              {/* Main Heading with Layout Fixes for Clipping */}
+              {/* Main Heading */}
               <div className="relative pb-2">
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-black leading-[1.05]">
                   <motion.span custom={1} variants={textVariants} className="block text-gray-900">Designing the</motion.span>
@@ -91,6 +118,7 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                 </h1>
               </div>
               
+              {/* Introduction Paragraph */}
               <motion.p 
                 custom={3} 
                 variants={textVariants}
@@ -161,16 +189,14 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                    </div>
                 </motion.div>
                 
-                {/* Floating Card 1 (Bottom Right) */}
+                {/* Floating Card 1 (Bottom Right) - Backend */}
                 <motion.div 
                   initial={{ x: 40, y: 40, opacity: 0 }}
                   whileInView={{ x: 0, y: 0, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
                   animate={{ y: [0, -10, 0] }}
-                  // Independent floating animation
-                  // @ts-ignore
                   transition={{ 
+                    x: { duration: 0.8, delay: 0.4 },
                     y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 } 
                   }}
                   whileHover={{ scale: 1.05, rotate: -2 }}
@@ -195,17 +221,15 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                   </div>
                 </motion.div>
 
-                {/* Floating Card 2 (Top Left) */}
+                {/* Floating Card 2 (Top Left) - Frontend */}
                  <motion.div 
                   initial={{ x: -40, y: -40, opacity: 0 }}
                   whileInView={{ x: 0, y: 0, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
                   animate={{ y: [0, 8, 0] }}
-                   // Independent floating animation
-                  // @ts-ignore
                   transition={{ 
-                    y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0 } 
+                    x: { duration: 0.8, delay: 0.6 },
+                    y: { duration: 7, repeat: Infinity, ease: "easeInOut" } 
                   }}
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   className="absolute top-12 left-0 p-5 bg-black text-white rounded-2xl shadow-2xl flex items-center gap-4 pr-8 z-20 cursor-default"

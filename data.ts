@@ -1,6 +1,14 @@
-import { Project, SkillCategory } from './types';
-import { Layout as LayoutIcon, Database, Terminal, Code2 } from 'lucide-react';
+/**
+ * @fileoverview Portfolio Data Configuration
+ * @description Centralized data store for all portfolio content including
+ * personal information, projects, skills, and timeline entries
+ */
 
+import { Project } from './types';
+
+/**
+ * Personal information and contact details
+ */
 export const personalInfo = {
   name: "Juztyne Clever Dalupang",
   role: "MERN Stack Developer",
@@ -14,17 +22,21 @@ export const personalInfo = {
     twitter: "https://twitter.com"
   },
   bio: [
-    "I am a 19-year-old Information Technology student at Quezon City University with a passion for building robust web applications. My expertise lies in the MERN stack, where I have successfully developed multiple full-scale projects, including comprehensive services systems for local Barangays.",
-    "Beyond coding, I focus on creating clean, intuitive, and scalable solutions. I am proficient in the full development lifecycle—from database architecture with MongoDB to dynamic frontends using React and Next.js."
+    "I am a 19-year-old Information Technology student at Quezon City University with a passion for building robust web applications. My expertise lies in the MERN stack, where I have successfully developed multiple full-scale projects, including comprehensive service systems for local Barangays.",
+    "Beyond coding, I focus on creating clean, intuitive, and scalable solutions. I am proficient in the full development lifecycle—from database architecture with MongoDB to dynamic front-ends using React and Next.js."
   ],
   experienceYears: "2+"
 };
 
+/**
+ * Portfolio projects
+ * Each project showcases different technical skills and problem-solving abilities
+ */
 export const projects: Project[] = [
   {
     id: 1,
     title: "Barangay Services Portal",
-    description: "A comprehensive MERN stack application digitizing local government services. Features include resident document requests, incident reporting, and an administrative dashboard for officials.",
+    description: "A comprehensive MERN stack application that digitizes local government services. Features include resident document requests, incident reporting, and an administrative dashboard for officials.",
     technologies: ["React", "Node.js", "Express", "MongoDB", "JWT"],
     imageUrl: "https://images.unsplash.com/photo-1565514020176-6c2235b8b3a0?q=80&w=2070&auto=format&fit=crop&grayscale",
     demoUrl: "#",
@@ -33,7 +45,7 @@ export const projects: Project[] = [
   {
     id: 2,
     title: "Inventory Management System",
-    description: "Real-time inventory tracking system built for small businesses. Utilizes RESTful APIs for data management and provides insightful analytics on stock levels.",
+    description: "A real-time inventory tracking system built for small businesses. Utilizes RESTful APIs for data management and provides insightful analytics on stock levels and trends.",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "PostgreSQL"],
     imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop&grayscale",
     demoUrl: "#",
@@ -42,7 +54,7 @@ export const projects: Project[] = [
   {
     id: 3,
     title: "Community Health Tracker",
-    description: "An information system designed to help local communities track health metrics and schedule appointments. Built with a focus on accessibility and data security.",
+    description: "An information system designed to help local communities track health metrics and schedule appointments. Built with a strong focus on accessibility and data security.",
     technologies: ["React", "Vite", "Node.js", "Render"],
     imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop&grayscale",
     repoUrl: "#"
@@ -50,13 +62,17 @@ export const projects: Project[] = [
   {
     id: 4,
     title: "Personal Portfolio V1",
-    description: "My first iteration of a personal portfolio site. Demonstrates my growth in UI/UX design and proficiency with static site generators.",
+    description: "My first iteration of a personal portfolio site. This project demonstrates my growth in UI/UX design and proficiency with modern frontend technologies.",
     technologies: ["HTML", "CSS", "JavaScript", "Vercel"],
     imageUrl: "https://images.unsplash.com/photo-1467232004587-560fe0ef2998?q=80&w=2070&auto=format&fit=crop&grayscale",
     demoUrl: "#"
   }
 ];
 
+/**
+ * Skills data organized by category
+ * Each category includes an icon reference and list of skills
+ */
 export const skillsData = [
   {
     category: "Frontend Ecosystem",
@@ -84,17 +100,21 @@ export const skillsData = [
   }
 ];
 
+/**
+ * Timeline entries for education and work experience
+ * Displayed in chronological order (most recent first)
+ */
 export const timeline = [
   {
     year: "2023 - Present",
-    role: "Freelance Full Stack Developer",
-    description: "Developing custom web solutions for local clients, specializing in MERN stack applications for community services (Barangay systems).",
+    role: "Freelance Full-Stack Developer",
+    description: "Developing custom web solutions for local clients, specializing in MERN stack applications for community services including Barangay management systems.",
     type: "work"
   },
   {
     year: "2023 - Present",
     role: "Quezon City University",
-    description: "Pursuing Bachelor of Science in Information Technology. Focusing on software engineering and web technologies.",
+    description: "Pursuing a Bachelor of Science in Information Technology with a focus on software engineering and web technologies.",
     type: "education"
   }
 ];

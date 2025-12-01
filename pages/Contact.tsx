@@ -1,42 +1,78 @@
-import React, { useState } from 'react';
+/**
+ * @fileoverview Contact Page Component
+ * @description Contact form and information section with form validation,
+ * loading states, and success feedback animations
+ */
+
+import React, { useState, useCallback } from 'react';
 import { Mail, MapPin, Send, Loader2, CheckCircle, Phone, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { personalInfo } from '../data';
 
 interface ContactProps {
+  /** Section ID for navigation */
   id: string;
 }
 
+/** Form data interface */
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+/** Form submission status type */
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+/**
+ * Contact Component
+ * Displays contact information and a message form
+ * 
+ * @param props - Component props
+ * @param props.id - Section ID for navigation scrolling
+ * @returns The rendered contact section
+ */
 const Contact: React.FC<ContactProps> = ({ id }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<FormStatus>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  /**
+   * Handles form input changes
+   * @param e - Change event from input or textarea
+   */
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  /**
+   * Handles form submission
+   * @param e - Form submit event
+   */
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setStatus('submitting');
     
-    // Simulate Backend POST Request
     try {
+      // Simulate backend POST request
+      // In production, replace with actual API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
+      // Reset status after showing success message
       setTimeout(() => setStatus('idle'), 5000); 
     } catch (error) {
+      console.error('Form submission error:', error);
       setStatus('error');
     }
   };
 
   return (
-    <section id={id} className="py-32 relative">
+    <section id={id} className="py-32 relative" aria-label="Contact section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center max-w-2xl mx-auto space-y-4 pb-4">
           <h2 className="text-5xl font-extrabold tracking-tighter text-black">Get in Touch</h2>

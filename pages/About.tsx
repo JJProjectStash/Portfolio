@@ -1,42 +1,66 @@
+/**
+ * @fileoverview About Page Component
+ * @description Displays personal information, bio, experience, and timeline
+ * Features a 3D tilt effect on the profile image and animated timeline
+ */
+
 import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Briefcase, GraduationCap, MapPin, Download } from 'lucide-react';
 import { personalInfo, timeline } from '../data';
 
 interface AboutProps {
+  /** Section ID for navigation */
   id: string;
 }
 
+/**
+ * About Component
+ * Displays personal bio, experience badge, and career timeline
+ * 
+ * @param props - Component props
+ * @param props.id - Section ID for navigation scrolling
+ * @returns The rendered about section
+ */
 const About: React.FC<AboutProps> = ({ id }) => {
-  // 3D Tilt Effect Logic
+  // Motion values for 3D tilt effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
+  // Apply spring physics for smooth tilt animation
   const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
   const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
 
+  // Transform mouse position to rotation values
   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["5deg", "-5deg"]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-5deg", "5deg"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  /**
+   * Handles mouse movement for 3D tilt effect
+   * @param e - Mouse event
+   */
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
     const rect = e.currentTarget.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
+    const mouseXPos = e.clientX - rect.left;
+    const mouseYPos = e.clientY - rect.top;
+    const xPct = mouseXPos / width - 0.5;
+    const yPct = mouseYPos / height - 0.5;
     x.set(xPct);
     y.set(yPct);
   };
 
-  const handleMouseLeave = () => {
+  /**
+   * Resets tilt effect when mouse leaves
+   */
+  const handleMouseLeave = (): void => {
     x.set(0);
     y.set(0);
   };
 
   return (
-    <section id={id} className="py-32 relative overflow-hidden">
+    <section id={id} className="py-32 relative overflow-hidden" aria-label="About section">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         
         {/* Intro Section */}

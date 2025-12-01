@@ -3,20 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juztyne Clever Dalupang - Portfolio</title>
-    <!-- Load Google Fonts: Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Load Tailwind CSS -->
+    <!-- Primary Meta Tags -->
+    <title>Juztyne Clever Dalupang | MERN Stack Developer Portfolio</title>
+    <meta name="title" content="Juztyne Clever Dalupang | MERN Stack Developer Portfolio" />
+    <meta name="description" content="Full-stack web developer specializing in MERN stack development. View my portfolio showcasing React, Node.js, MongoDB projects and professional skills." />
+    <meta name="keywords" content="MERN Stack, React Developer, Node.js, MongoDB, Full Stack Developer, Web Developer, Philippines, Portfolio" />
+    <meta name="author" content="Juztyne Clever Dalupang" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yoursite.com/" />
+    <meta property="og:title" content="Juztyne Clever Dalupang | MERN Stack Developer" />
+    <meta property="og:description" content="Full-stack web developer specializing in MERN stack development. View my portfolio showcasing React, Node.js, MongoDB projects." />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://yoursite.com/" />
+    <meta property="twitter:title" content="Juztyne Clever Dalupang | MERN Stack Developer" />
+    <meta property="twitter:description" content="Full-stack web developer specializing in MERN stack development. View my portfolio showcasing React, Node.js, MongoDB projects." />
+    <meta property="twitter:image" content="/og-image.png" />
+    
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    
+    <!-- Favicon - Update these paths when you add actual favicon files -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Preconnect to External Resources for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    
+    <!-- DNS Prefetch for CDN Resources -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://aistudiocdn.com" />
+    
+    <!-- Font Loading with Display Swap for Better Performance -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" 
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    </noscript>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
             },
             animation: {
               'float': 'float 6s ease-in-out infinite',
@@ -31,8 +76,11 @@
         },
       }
     </script>
+    
     <style>
-      /* Base styles */
+      /* Critical CSS - Above the fold styles */
+      
+      /* Base Styles */
       html {
         scroll-behavior: smooth;
       }
@@ -45,13 +93,14 @@
         scrollbar-width: none;
       }
       
+      /* Hide scrollbar for Chrome, Safari, and Opera */
       ::-webkit-scrollbar {
         display: none;
         width: 0;
         background: transparent;
       }
 
-      /* Unified Background Pattern with Noise */
+      /* Background Pattern */
       body {
         background-color: #fafafa;
         background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
@@ -59,7 +108,7 @@
         background-attachment: fixed;
       }
       
-      /* Noise Texture Overlay */
+      /* Noise Texture Overlay for Visual Depth */
       .bg-noise {
         position: fixed;
         top: 0;
@@ -72,13 +121,58 @@
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
 
+      /* Root Container */
       #root {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
       }
+      
+      /* Loading State - Shown Before React Hydrates */
+      .initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fafafa;
+        z-index: 9999;
+      }
+      
+      .initial-loader .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #e5e7eb;
+        border-top-color: #000;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Focus Styles for Accessibility */
+      :focus-visible {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+      
+      /* Reduce motion for users who prefer it */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
-  <script type="importmap">
+    
+    <!-- Import Map for ES Modules -->
+    <script type="importmap">
 {
   "imports": {
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
@@ -89,10 +183,44 @@
     "framer-motion": "https://aistudiocdn.com/framer-motion@^11.0.8"
   }
 }
-</script>
-</head>
+    </script>
+  </head>
   <body class="text-gray-900 font-sans antialiased selection:bg-black selection:text-white">
-    <div class="bg-noise"></div>
+    <!-- Initial Loading State -->
+    <div class="initial-loader" id="initial-loader">
+      <div class="spinner"></div>
+    </div>
+    
+    <!-- Noise Texture Overlay -->
+    <div class="bg-noise" aria-hidden="true"></div>
+    
+    <!-- React Root -->
     <div id="root"></div>
+    
+    <!-- Remove loader once React mounts -->
+    <script>
+      // Hide initial loader when React app is ready
+      window.addEventListener('DOMContentLoaded', function() {
+        // Give React a moment to render, then hide loader
+        setTimeout(function() {
+          var loader = document.getElementById('initial-loader');
+          if (loader) {
+            loader.style.opacity = '0';
+            loader.style.transition = 'opacity 0.3s ease';
+            setTimeout(function() {
+              loader.style.display = 'none';
+            }, 300);
+          }
+        }, 100);
+      });
+    </script>
+    
+    <!-- Noscript Fallback -->
+    <noscript>
+      <div style="padding: 2rem; text-align: center;">
+        <h1>JavaScript Required</h1>
+        <p>Please enable JavaScript to view this portfolio.</p>
+      </div>
+    </noscript>
   </body>
 </html>

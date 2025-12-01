@@ -1,11 +1,26 @@
-import React, { useState, useEffect } from 'react';
+/**
+ * @fileoverview Scroll Progress Component
+ * @description Displays scroll progress indicator and back-to-top button
+ * Shows horizontal progress bar on mobile and vertical bar on desktop
+ */
+
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 
+/** Scroll threshold (in pixels) before showing back-to-top button */
+const SCROLL_THRESHOLD = 400;
+
+/**
+ * ScrollProgress Component
+ * Displays a scroll progress indicator and a back-to-top button
+ * 
+ * @returns The scroll progress indicator and back-to-top button
+ */
 const ScrollProgress: React.FC = () => {
   const { scrollYProgress } = useScroll();
   
-  // Spring physics for smooth filling animation
+  // Apply spring physics for smooth filling animation
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -15,13 +30,14 @@ const ScrollProgress: React.FC = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    // Optimization: Throttled scroll handler
+    // Throttled scroll handler using requestAnimationFrame for performance
     let ticking = false;
-    const handleScroll = () => {
+    
+    const handleScroll = (): void => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-            setShowBackToTop(window.scrollY > 400);
-            ticking = false;
+          setShowBackToTop(window.scrollY > SCROLL_THRESHOLD);
+          ticking = false;
         });
         ticking = true;
       }
@@ -31,21 +47,25 @@ const ScrollProgress: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
+  /**
+   * Smoothly scrolls the page back to the top
+   */
+  const scrollToTop = useCallback((): void => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
   return (
     <>
-      {/* Mobile: Top Horizontal Progress Bar */}
+      {/* Mobile: Horizontal progress bar at the top */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 bg-black origin-left z-[60] md:hidden shadow-sm"
         style={{ scaleX: smoothProgress }}
+        role="progressbar"
+        aria-label="Page scroll progress"
       />
       
-      {/* Desktop: Vertical Right Progress Bar Container */}
+      {/* Desktop: Vertical progress bar on the right side */}
       <div className="fixed top-0 right-0 bottom-0 w-3 bg-gray-100/80 z-[60] hidden md:block backdrop-blur-sm border-l border-gray-200">
-        {/* The Filling Bar */}
         <motion.div
           className="w-full bg-black origin-top absolute top-0 left-0 right-0"
           style={{ scaleY: smoothProgress, height: '100%' }}

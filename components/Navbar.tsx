@@ -1,12 +1,26 @@
+/**
+ * @fileoverview Navigation Bar Component
+ * @description Responsive navigation bar with smooth scroll, active section tracking,
+ * and animated mobile menu. Uses Intersection Observer for active section detection.
+ */
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
+/**
+ * Navigation link interface
+ */
 interface NavLink {
+  /** Section ID to scroll to */
   id: string;
+  /** Display label */
   label: string;
 }
 
+/**
+ * Navigation links configuration
+ */
 const links: NavLink[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
@@ -15,28 +29,43 @@ const links: NavLink[] = [
   { id: 'contact', label: 'Contact' },
 ];
 
+/** Scroll threshold for navbar background change */
+const SCROLL_THRESHOLD = 20;
+
+/**
+ * Navbar Component
+ * Provides navigation with smooth scrolling and responsive mobile menu
+ * 
+ * @returns The rendered navigation bar
+ */
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Optimized Scroll Listener for Navbar styling
+  // Optimized scroll listener for navbar background styling
   useEffect(() => {
     let ticking = false;
-    const handleScroll = () => {
+    
+    const handleScroll = (): void => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
           ticking = false;
         });
         ticking = true;
       }
     };
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = useCallback((id: string) => {
+  /**
+   * Scrolls to a specific section and closes mobile menu
+   * @param id - The section ID to scroll to
+   */
+  const scrollToSection = useCallback((id: string): void => {
     setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
@@ -65,6 +94,7 @@ const Navbar: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Animation variants for mobile menu
   const menuVariants: Variants = {
     closed: {
       opacity: 0,
@@ -90,12 +120,21 @@ const Navbar: React.FC = () => {
           ? "bg-white/80 backdrop-blur-xl border-gray-200/50 py-2" 
           : "bg-transparent border-transparent py-4"
       }`}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14">
           
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
+          <div 
+            className="flex-shrink-0 flex items-center cursor-pointer" 
+            onClick={() => scrollToSection('home')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && scrollToSection('home')}
+            aria-label="Go to home section"
+          >
             <div className="text-lg font-bold tracking-tight text-black flex items-center gap-2.5 group">
               <motion.span 
                 whileHover={{ rotate: 90, scale: 1.1, backgroundColor: "#000" }}
@@ -110,13 +149,15 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-1" role="menubar">
             {links.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
+                  role="menuitem"
+                  aria-current={isActive ? 'page' : undefined}
                   className={`relative px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-colors duration-300 outline-none ${
                     isActive ? "text-black" : "text-gray-400 hover:text-black"
                   }`}
@@ -140,6 +181,9 @@ const Navbar: React.FC = () => {
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg text-black hover:bg-gray-100 focus:outline-none transition-colors"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
@@ -161,17 +205,22 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             className="md:hidden bg-white/95 backdrop-blur-xl border-b border-gray-100 overflow-hidden absolute w-full left-0 shadow-2xl z-40"
             initial="closed"
             animate="open"
             exit="closed"
             variants={menuVariants}
+            role="menu"
+            aria-label="Mobile navigation menu"
           >
             <div className="px-6 py-8 space-y-2">
               {links.map((link) => (
                 <motion.div key={link.id} variants={mobileLinkVariants}>
                   <button
                     onClick={() => scrollToSection(link.id)}
+                    role="menuitem"
+                    aria-current={activeSection === link.id ? 'page' : undefined}
                     className={`block w-full text-left px-5 py-4 rounded-2xl text-lg font-bold tracking-tight transition-all duration-300 ${
                       activeSection === link.id
                         ? 'bg-black text-white shadow-lg pl-7'
