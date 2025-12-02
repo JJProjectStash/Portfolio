@@ -24,6 +24,26 @@
   }
 }
 
+/* Performance Optimizations */
+* {
+  /* Improve scrolling performance */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Enable hardware acceleration for animated elements */
+.transform,
+[class*='hover:scale'],
+[class*='group-hover:scale'] {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Optimize images */
+img {
+  content-visibility: auto;
+}
+
 /* Base Styles */
 html {
   scroll-behavior: smooth;

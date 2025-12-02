@@ -49,8 +49,17 @@ export default defineConfig(({ mode }) => {
       // Output directory
       outDir: 'dist',
 
-      // Generate source maps for debugging
-      sourcemap: mode === 'development',
+      // Generate source maps for debugging (disabled in production for smaller builds)
+      sourcemap: false,
+
+      // Minification settings
+      minify: 'esbuild',
+
+      // Target modern browsers for smaller bundles
+      target: 'es2020',
+
+      // CSS code splitting
+      cssCodeSplit: true,
 
       // Code splitting configuration
       rollupOptions: {
@@ -62,6 +71,10 @@ export default defineConfig(({ mode }) => {
             animation: ['framer-motion'],
             icons: ['lucide-react'],
           },
+          // Optimize chunk file names for caching
+          chunkFileNames: 'assets/[name]-[hash].js',
+          entryFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash].[ext]',
         },
       },
 

@@ -57,26 +57,10 @@ const Home: React.FC<HomeProps> = ({ id }) => {
       className="relative min-h-screen flex flex-col justify-center py-20 overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Background Decorative Elements */}
+      {/* Background Decorative Elements - Static for better performance */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-          }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-20 -right-20 w-96 h-96 bg-gray-200/40 rounded-full blur-3xl opacity-50"
-        />
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 1.2, 1],
-            x: [0, -30, 0],
-          }}
-          transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-40 -left-20 w-72 h-72 bg-gray-200/40 rounded-full blur-3xl opacity-50"
-        />
+        <div className="absolute -top-20 -right-20 w-96 h-96 bg-gray-200/40 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-40 -left-20 w-72 h-72 bg-gray-200/40 rounded-full blur-3xl opacity-50" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex-grow flex flex-col justify-center">

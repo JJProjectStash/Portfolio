@@ -31,6 +31,11 @@ export const personalInfo = {
 /**
  * Portfolio projects
  * Each project showcases different technical skills and problem-solving abilities
+ *
+ * HOW TO USE LOCAL IMAGES:
+ * 1. Place your images in the public/images/ folder
+ * 2. Use the path like '/images/your-image.jpg'
+ * 3. Recommended: Use optimized JPG/WebP images (max 800px width, ~100KB)
  */
 export const projects: Project[] = [
   {
@@ -39,8 +44,8 @@ export const projects: Project[] = [
     description:
       'A comprehensive MERN stack application that digitizes local government services. Features include resident document requests, incident reporting, and an administrative dashboard for officials.',
     technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop&q=80',
+    // Place your image at: public/images/project-barangay.jpg
+    imageUrl: '/images/project-barangay.jpg',
     demoUrl: '#',
     repoUrl: '#',
   },
@@ -50,8 +55,8 @@ export const projects: Project[] = [
     description:
       'A real-time inventory tracking system built for small businesses. Utilizes RESTful APIs for data management and provides insightful analytics on stock levels and trends.',
     technologies: ['TypeScript', 'Next.js', 'Tailwind CSS', 'PostgreSQL'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
+    // Place your image at: public/images/project-inventory.jpg
+    imageUrl: '/images/project-inventory.jpg',
     demoUrl: '#',
     repoUrl: '#',
   },
@@ -61,8 +66,8 @@ export const projects: Project[] = [
     description:
       'An information system designed to help local communities track health metrics and schedule appointments. Built with a strong focus on accessibility and data security.',
     technologies: ['React', 'Vite', 'Node.js', 'Render'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format&fit=crop&q=80',
+    // Place your image at: public/images/project-health.jpg
+    imageUrl: '/images/project-health.jpg',
     repoUrl: '#',
   },
   {
@@ -71,8 +76,8 @@ export const projects: Project[] = [
     description:
       'My first iteration of a personal portfolio site. This project demonstrates my growth in UI/UX design and proficiency with modern frontend technologies.',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80',
+    // Place your image at: public/images/project-portfolio.jpg
+    imageUrl: '/images/project-portfolio.jpg',
     demoUrl: '#',
   },
 ];

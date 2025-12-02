@@ -36,7 +36,7 @@ const ProjectSkeleton: React.FC = () => (
 /**
  * Projects Component
  * Displays a grid of portfolio projects with animations
- * 
+ *
  * @param props - Component props
  * @param props.id - Section ID for navigation scrolling
  * @returns The rendered projects section
@@ -46,15 +46,9 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate async data loading (could be replaced with actual API call)
-    const fetchProjects = async (): Promise<void> => {
-      setLoading(true);
-      // Short delay for smoother transition
-      await new Promise(resolve => setTimeout(resolve, 300)); 
-      setProjects(projectsData);
-      setLoading(false);
-    };
-    fetchProjects();
+    // Load projects immediately - no artificial delay
+    setProjects(projectsData);
+    setLoading(false);
   }, []);
 
   // Animation variants for staggered container
@@ -62,14 +56,14 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
+      transition: { staggerChildren: 0.1 },
+    },
   };
 
   // Animation variants for individual items
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50, damping: 20 } }
+    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 50, damping: 20 } },
   };
 
   return (
@@ -78,16 +72,19 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
         <div className="space-y-4 border-b border-gray-200/60 pb-10">
           <h2 className="text-5xl font-extrabold tracking-tighter text-black">Selected Work</h2>
           <p className="text-lg text-gray-500 max-w-2xl font-light leading-relaxed">
-            A showcase of my recent work, ranging from frontend prototypes to full-stack applications. Each project represents a unique challenge and solution.
+            A showcase of my recent work, ranging from frontend prototypes to full-stack
+            applications. Each project represents a unique challenge and solution.
           </p>
         </div>
 
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {[1, 2, 3, 4].map((n) => <ProjectSkeleton key={n} />)}
+            {[1, 2, 3, 4].map((n) => (
+              <ProjectSkeleton key={n} />
+            ))}
           </div>
         ) : projects.length === 0 ? (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center justify-center py-24 text-center space-y-4 bg-white/60 backdrop-blur-md rounded-3xl border border-gray-200 border-dashed"
@@ -98,11 +95,11 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
             <h3 className="text-xl font-bold text-gray-900">No Projects Found</h3>
           </motion.div>
         ) : (
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-12"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             variants={containerVariants}
           >
             {projects.map((project) => (
@@ -116,21 +113,31 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
 
                 {/* Project Image Area with Optimization */}
                 <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100 relative z-0">
-                  <img 
-                    src={project.imageUrl} 
-                    alt={project.title} 
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      (e.target as HTMLImageElement).src =
+                        `https://placehold.co/800x500/f3f4f6/9ca3af?text=${encodeURIComponent(project.title)}`;
+                    }}
                   />
-                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
-                  
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
+
                   {/* Floating Action Button */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-100 z-20">
                     {project.demoUrl && (
-                       <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white text-black rounded-full shadow-xl flex items-center justify-center hover:bg-black hover:text-white transition-colors">
-                          <ArrowUpRight size={20} />
-                       </a>
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 bg-white text-black rounded-full shadow-xl flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                      >
+                        <ArrowUpRight size={20} />
+                      </a>
                     )}
                   </div>
                 </div>
@@ -138,12 +145,14 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                 {/* Project Content */}
                 <div className="flex flex-col flex-grow p-8 relative z-10">
                   <div className="mb-6 space-y-2">
-                    <h3 className="text-2xl font-bold text-black tracking-tight">{project.title}</h3>
+                    <h3 className="text-2xl font-bold text-black tracking-tight">
+                      {project.title}
+                    </h3>
                     <div className="h-0.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                       <div className="h-full bg-black w-0 group-hover:w-full transition-all duration-700 ease-in-out"></div>
+                      <div className="h-full bg-black w-0 group-hover:w-full transition-all duration-700 ease-in-out"></div>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-600 mb-8 flex-grow text-base leading-relaxed font-light">
                     {project.description}
                   </p>
@@ -151,7 +160,10 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                   {/* Technologies Tags */}
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.technologies.map((tech) => (
-                      <span key={tech} className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold bg-white border border-gray-200 rounded-full text-gray-500 group-hover:border-gray-300 transition-colors">
+                      <span
+                        key={tech}
+                        className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold bg-white border border-gray-200 rounded-full text-gray-500 group-hover:border-gray-300 transition-colors"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -160,9 +172,9 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                   {/* Links */}
                   <div className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-100/50">
                     {project.demoUrl && (
-                      <a 
-                        href={project.demoUrl} 
-                        target="_blank" 
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-bold text-black hover:text-gray-600 transition-colors"
                       >
@@ -170,9 +182,9 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                       </a>
                     )}
                     {project.repoUrl && (
-                      <a 
-                        href={project.repoUrl} 
-                        target="_blank" 
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-black transition-colors ml-auto"
                       >
