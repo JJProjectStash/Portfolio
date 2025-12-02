@@ -182,7 +182,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
                   size={20}
                   className="group-hover:translate-y-1 transition-transform duration-300"
                 />
-                <span>Download Resume</span>
+                <span>Download CV</span>
               </motion.a>
 
               {/* Download Success Toast */}
@@ -195,7 +195,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
                     className="absolute left-0 top-full mt-4 flex items-center gap-2 px-4 py-3 bg-green-50 border border-green-200 text-green-700 rounded-xl shadow-lg"
                   >
                     <CheckCircle size={18} className="text-green-500" />
-                    <span className="text-sm font-medium">Resume downloading...</span>
+                    <span className="text-sm font-medium">CV downloading...</span>
                   </motion.div>
                 )}
               </AnimatePresence>

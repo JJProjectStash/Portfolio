@@ -217,7 +217,7 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
                   </div>
                   <div>
                     <p className="font-bold text-black text-sm uppercase tracking-wider mb-1">
-                      Resume
+                      Curriculum Vitae
                     </p>
                     <span className="text-gray-600 text-lg font-medium group-hover:text-black transition-colors flex items-center gap-2">
                       Download CV <Download size={16} className="opacity-60" />
