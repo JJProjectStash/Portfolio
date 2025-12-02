@@ -4,10 +4,14 @@
  * Features a 3D tilt effect on the profile image and animated timeline
  */
 
-import React from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { Briefcase, GraduationCap, MapPin, Download, CheckCircle, FileText } from 'lucide-react';
 import { personalInfo, timeline } from '../data';
+
+/** CV file path in public folder */
+const CV_FILE_PATH = '/Trimmed CV.pdf';
+const CV_FILE_NAME = 'Juztyne_Clever_Dalupang_CV.pdf';
 
 interface AboutProps {
   /** Section ID for navigation */
@@ -23,6 +27,17 @@ interface AboutProps {
  * @returns The rendered about section
  */
 const About: React.FC<AboutProps> = ({ id }) => {
+  // State for download toast notification
+  const [showDownloadToast, setShowDownloadToast] = useState(false);
+
+  // Auto-hide toast after 3 seconds
+  React.useEffect(() => {
+    if (showDownloadToast) {
+      const timer = setTimeout(() => setShowDownloadToast(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showDownloadToast]);
+
   // Motion values for 3D tilt effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -154,18 +169,36 @@ const About: React.FC<AboutProps> = ({ id }) => {
               ))}
             </div>
 
-            <div className="pt-6">
-              <motion.button
+            <div className="pt-6 relative">
+              <motion.a
+                href={CV_FILE_PATH}
+                download={CV_FILE_NAME}
+                onClick={() => setShowDownloadToast(true)}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="group flex items-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-2xl hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-2xl hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl cursor-pointer"
               >
                 <Download
                   size={20}
                   className="group-hover:translate-y-1 transition-transform duration-300"
                 />
                 <span>Download Resume</span>
-              </motion.button>
+              </motion.a>
+
+              {/* Download Success Toast */}
+              <AnimatePresence>
+                {showDownloadToast && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    className="absolute left-0 top-full mt-4 flex items-center gap-2 px-4 py-3 bg-green-50 border border-green-200 text-green-700 rounded-xl shadow-lg"
+                  >
+                    <CheckCircle size={18} className="text-green-500" />
+                    <span className="text-sm font-medium">Resume downloading...</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         </div>

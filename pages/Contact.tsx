@@ -15,6 +15,8 @@ import {
   Phone,
   ArrowRight,
   AlertCircle,
+  Download,
+  FileText,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { personalInfo } from '../data';
@@ -202,6 +204,26 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
                     <p className="text-gray-600 text-lg font-medium">{personalInfo.location}</p>
                   </div>
                 </div>
+
+                {/* Quick CV Download */}
+                <motion.a
+                  whileHover={{ x: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
+                  href="/Trimmed CV.pdf"
+                  download="Juztyne_Clever_Dalupang_CV.pdf"
+                  className="flex items-center gap-5 group p-5 rounded-3xl transition-all border border-transparent hover:border-gray-200 hover:shadow-sm"
+                >
+                  <div className="p-4 bg-white text-black border border-gray-200 rounded-2xl shadow-sm group-hover:bg-black group-hover:text-white transition-colors duration-300">
+                    <FileText className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-black text-sm uppercase tracking-wider mb-1">
+                      Resume
+                    </p>
+                    <span className="text-gray-600 text-lg font-medium group-hover:text-black transition-colors flex items-center gap-2">
+                      Download CV <Download size={16} className="opacity-60" />
+                    </span>
+                  </div>
+                </motion.a>
               </div>
             </div>
           </motion.div>
