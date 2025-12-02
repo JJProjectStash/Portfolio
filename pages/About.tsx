@@ -96,7 +96,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
             >
               {/* Profile/Workspace Image - Place your image at public/images/about-photo.jpg */}
               <img
-                src="/images/about-photo.jpg"
+                src="/images/Juztyne-AboutMe.jpg"
                 alt="Juztyne Clever Dalupang"
                 loading="eager"
                 decoding="async"
