@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -23,15 +24,17 @@ import Contact from './pages/Contact';
 const App: React.FC = () => {
   return (
     <ErrorBoundary>
-      <HashRouter>
-        <Layout>
-          <Home id="home" />
-          <About id="about" />
-          <Projects id="projects" />
-          <Skills id="skills" />
-          <Contact id="contact" />
-        </Layout>
-      </HashRouter>
+      <ThemeProvider>
+        <HashRouter>
+          <Layout>
+            <Home id="home" />
+            <About id="about" />
+            <Projects id="projects" />
+            <Skills id="skills" />
+            <Contact id="contact" />
+          </Layout>
+        </HashRouter>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 };

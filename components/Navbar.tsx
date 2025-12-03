@@ -1,12 +1,13 @@
 /**
  * @fileoverview Navigation Bar Component
  * @description Responsive navigation bar with smooth scroll, active section tracking,
- * and animated mobile menu. Uses Intersection Observer for active section detection.
+ * animated mobile menu, and theme toggle. Uses Intersection Observer for active section detection.
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 /**
  * Navigation link interface
@@ -122,7 +123,7 @@ const Navbar: React.FC = () => {
     <nav
       className={`fixed top-0 z-50 w-full transition-all duration-500 border-b ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-xl border-gray-200/50 py-2'
+          ? 'bg-theme-navbar-scrolled backdrop-blur-xl border-theme-navbar py-2'
           : 'bg-transparent border-transparent py-4'
       }`}
       role="navigation"
@@ -139,16 +140,16 @@ const Navbar: React.FC = () => {
             onKeyDown={(e) => e.key === 'Enter' && scrollToSection('home')}
             aria-label="Go to home section"
           >
-            <div className="text-lg font-bold tracking-tight text-black flex items-center gap-2.5 group">
+            <div className="text-lg font-bold tracking-tight text-theme-primary flex items-center gap-2.5 group">
               <motion.span
-                whileHover={{ rotate: 90, scale: 1.1, backgroundColor: '#000' }}
+                whileHover={{ rotate: 90, scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                className="bg-black text-white w-9 h-9 flex items-center justify-center rounded-lg text-xs font-bold shadow-md"
+                className="btn-theme-primary w-9 h-9 flex items-center justify-center rounded-lg text-xs font-bold shadow-md"
               >
                 JC
               </motion.span>
-              <span className="group-hover:text-gray-600 transition-colors tracking-tighter uppercase text-sm font-bold">
+              <span className="group-hover:text-theme-secondary transition-colors tracking-tighter uppercase text-sm font-bold">
                 Dalupang.
               </span>
             </div>
@@ -165,13 +166,13 @@ const Navbar: React.FC = () => {
                   role="menuitem"
                   aria-current={isActive ? 'page' : undefined}
                   className={`relative px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-colors duration-300 outline-none ${
-                    isActive ? 'text-black' : 'text-gray-400 hover:text-black'
+                    isActive ? 'text-theme-primary' : 'text-theme-tertiary hover:text-theme-primary'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="navbar-active"
-                      className="absolute inset-0 bg-gray-100/80 rounded-full -z-10"
+                      className="absolute inset-0 bg-theme-tertiary rounded-full -z-10"
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -179,14 +180,22 @@ const Navbar: React.FC = () => {
                 </button>
               );
             })}
+
+            {/* Theme Toggle - Desktop */}
+            <div className="ml-4 pl-4 border-l border-theme-primary">
+              <ThemeToggle size="sm" />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            {/* Theme Toggle - Mobile */}
+            <ThemeToggle size="sm" />
+
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-black hover:bg-gray-100 focus:outline-none transition-colors"
+              className="p-2 rounded-lg text-theme-primary hover:bg-theme-tertiary focus:outline-none transition-colors"
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -222,7 +231,7 @@ const Navbar: React.FC = () => {
         {isOpen && (
           <motion.div
             id="mobile-menu"
-            className="md:hidden bg-white/95 backdrop-blur-xl border-b border-gray-100 overflow-hidden absolute w-full left-0 shadow-2xl z-40"
+            className="md:hidden bg-theme-navbar-scrolled backdrop-blur-xl border-b border-theme-primary overflow-hidden absolute w-full left-0 shadow-theme-xl z-40"
             initial="closed"
             animate="open"
             exit="closed"
@@ -239,8 +248,8 @@ const Navbar: React.FC = () => {
                     aria-current={activeSection === link.id ? 'page' : undefined}
                     className={`block w-full text-left px-5 py-4 rounded-2xl text-lg font-bold tracking-tight transition-all duration-300 ${
                       activeSection === link.id
-                        ? 'bg-black text-white shadow-lg pl-7'
-                        : 'text-gray-400 hover:bg-gray-50 hover:text-black hover:pl-7'
+                        ? 'btn-theme-primary shadow-lg pl-7'
+                        : 'text-theme-tertiary hover:bg-theme-tertiary hover:text-theme-primary hover:pl-7'
                     }`}
                   >
                     {link.label}

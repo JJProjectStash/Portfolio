@@ -59,8 +59,8 @@ const Home: React.FC<HomeProps> = ({ id }) => {
     >
       {/* Background Decorative Elements - Static for better performance */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-gray-200/40 rounded-full blur-3xl opacity-50" />
-        <div className="absolute top-40 -left-20 w-72 h-72 bg-gray-200/40 rounded-full blur-3xl opacity-50" />
+        <div className="absolute -top-20 -right-20 w-96 h-96 bg-theme-tertiary rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-40 -left-20 w-72 h-72 bg-theme-tertiary rounded-full blur-3xl opacity-50" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex-grow flex flex-col justify-center">
@@ -77,7 +77,7 @@ const Home: React.FC<HomeProps> = ({ id }) => {
               <motion.div
                 custom={0}
                 variants={textVariants}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-gray-200 text-sm font-bold text-gray-800 shadow-sm hover:border-gray-300 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-theme-secondary backdrop-blur-md border border-theme-primary text-sm font-bold text-theme-primary shadow-theme-sm hover:border-theme-hover transition-colors"
               >
                 <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -90,14 +90,14 @@ const Home: React.FC<HomeProps> = ({ id }) => {
 
               {/* Main Heading */}
               <div className="relative pb-2">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-black leading-[1.05]">
-                  <motion.span custom={1} variants={textVariants} className="block text-gray-900">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-theme-primary leading-[1.05]">
+                  <motion.span custom={1} variants={textVariants} className="block">
                     Designing the
                   </motion.span>
                   <motion.span
                     custom={2}
                     variants={textVariants}
-                    className="block text-transparent bg-clip-text bg-gradient-to-br from-gray-500 via-gray-800 to-black pb-4 -mb-4"
+                    className="block gradient-text-theme pb-4 -mb-4"
                   >
                     Digital Future.
                   </motion.span>
@@ -108,9 +108,10 @@ const Home: React.FC<HomeProps> = ({ id }) => {
               <motion.p
                 custom={3}
                 variants={textVariants}
-                className="text-lg md:text-xl text-gray-500 max-w-lg leading-relaxed mx-auto md:mx-0 font-light"
+                className="text-lg md:text-xl text-theme-secondary max-w-lg leading-relaxed mx-auto md:mx-0 font-light"
               >
-                Hi, I'm <span className="text-black font-semibold">{personalInfo.name}</span>. A{' '}
+                Hi, I'm{' '}
+                <span className="text-theme-primary font-semibold">{personalInfo.name}</span>. A{' '}
                 {personalInfo.role} based in {personalInfo.location}, crafting robust & scalable web
                 solutions.
               </motion.p>
@@ -127,7 +128,7 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToProjects}
-                className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 bg-black text-white font-bold rounded-2xl hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl"
+                className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 btn-theme-primary font-bold rounded-2xl transition-all shadow-theme-lg hover:shadow-theme-xl"
               >
                 View My Work
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -136,7 +137,7 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToContact}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/60 backdrop-blur-md border border-gray-200 text-black font-bold rounded-2xl hover:bg-white hover:border-gray-300 transition-all shadow-sm hover:shadow-md"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-theme-secondary backdrop-blur-md border border-theme-primary text-theme-primary font-bold rounded-2xl hover:bg-theme-tertiary hover:border-theme-hover transition-all shadow-theme-sm hover:shadow-theme-md"
               >
                 Contact Me
               </motion.button>
@@ -147,14 +148,14 @@ const Home: React.FC<HomeProps> = ({ id }) => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.7 }}
-              className="flex items-center justify-center md:justify-start gap-6 text-gray-400 pt-2"
+              className="flex items-center justify-center md:justify-start gap-6 text-theme-tertiary pt-2"
             >
               <motion.a
-                whileHover={{ y: -3, color: '#000' }}
+                whileHover={{ y: -3 }}
                 href={personalInfo.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors transform"
+                className="transition-colors transform hover:text-theme-primary"
                 aria-label="GitHub profile"
               >
                 <Github size={24} strokeWidth={1.5} />
@@ -179,8 +180,8 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                   <Linkedin size={24} strokeWidth={1.5} />
                 </span>
               )}
-              <div className="h-px w-12 bg-gray-300 hidden md:block"></div>
-              <span className="text-xs font-bold tracking-widest uppercase text-gray-400">
+              <div className="h-px w-12 bg-theme-primary hidden md:block"></div>
+              <span className="text-xs font-bold tracking-widest uppercase text-theme-tertiary">
                 MERN Stack Enthusiast
               </span>
             </motion.div>
@@ -199,11 +200,11 @@ const Home: React.FC<HomeProps> = ({ id }) => {
               <motion.div
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute inset-0 bg-white/70 backdrop-blur-xl rounded-[2.5rem] border border-gray-100 shadow-2xl flex items-center justify-center overflow-hidden z-10"
+                className="absolute inset-0 bg-theme-secondary backdrop-blur-xl rounded-[2.5rem] border border-theme-primary shadow-theme-xl flex items-center justify-center overflow-hidden z-10"
               >
-                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-60"></div>
-                <div className="relative z-10 p-10 bg-gray-50/80 rounded-3xl border border-gray-100 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
-                  <Code size={80} strokeWidth={1} className="text-gray-400" />
+                <div className="absolute inset-0 bg-[radial-gradient(var(--bg-pattern-dot)_1px,transparent_1px)] [background-size:20px_20px] opacity-60"></div>
+                <div className="relative z-10 p-10 bg-theme-tertiary rounded-3xl border border-theme-primary shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+                  <Code size={80} strokeWidth={1} className="text-theme-tertiary" />
                 </div>
               </motion.div>
 
@@ -218,25 +219,25 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                   y: { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 },
                 }}
                 whileHover={{ scale: 1.05, rotate: -2 }}
-                className="absolute bottom-12 right-0 w-64 p-5 bg-white/90 backdrop-blur-md rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-200/50 z-20 cursor-default"
+                className="absolute bottom-12 right-0 w-64 p-5 bg-theme-secondary backdrop-blur-md rounded-2xl shadow-theme-xl border border-theme-primary z-20 cursor-default"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center text-white shadow-lg">
+                  <div className="w-12 h-12 btn-theme-primary rounded-xl flex items-center justify-center shadow-lg">
                     <Terminal size={24} />
                   </div>
                   <div>
-                    <div className="text-base font-bold text-gray-900">Backend API</div>
-                    <div className="text-xs text-gray-500 font-medium">
+                    <div className="text-base font-bold text-theme-primary">Backend API</div>
+                    <div className="text-xs text-theme-secondary font-medium">
                       Node.js • Express • MongoDB
                     </div>
                   </div>
                 </div>
-                <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                <div className="w-full bg-theme-tertiary rounded-full h-2 overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: '92%' }}
                     transition={{ delay: 0.8, duration: 1.2, ease: 'circOut' }}
-                    className="bg-black h-full rounded-full"
+                    className="btn-theme-primary h-full rounded-full"
                   />
                 </div>
               </motion.div>
@@ -277,9 +278,9 @@ const Home: React.FC<HomeProps> = ({ id }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{ delay: 1, duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400 hidden md:flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-theme-tertiary hidden md:flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-300">
+        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-theme-tertiary">
           Scroll
         </span>
         <MousePointer2 size={16} />

@@ -1,12 +1,170 @@
 /**
  * @fileoverview Global Styles
- * @description Main CSS file with Tailwind CSS v4 import and custom styles
+ * @description Main CSS file with Tailwind CSS v4 import and custom styles.
+ * Implements a professional theme system following best practices from
+ * major websites like YouTube, GitHub, and Facebook.
  */
 
 /* Tailwind CSS v4 - single import */
 @import 'tailwindcss';
 
-/* Custom CSS Variables for Theme */
+/* ============================================
+   DESIGN TOKENS - CSS VARIABLES
+   Following the token hierarchy:
+   Level 1: Primitive colors
+   Level 2: Semantic tokens (light theme default)
+   Level 3: Theme overrides (dark theme)
+   ============================================ */
+
+:root {
+  /* === Primitive Color Palette === */
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Gray Scale - Light Theme Optimized */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-gray-950: #0a0a0a;
+
+  /* Brand/Accent Colors */
+  --color-accent-light: #3b82f6;
+  --color-accent-dark: #60a5fa;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  /* === Semantic Tokens (Light Theme) === */
+  /* Backgrounds */
+  --bg-primary: var(--color-gray-50);
+  --bg-secondary: var(--color-white);
+  --bg-tertiary: var(--color-gray-100);
+  --bg-elevated: var(--color-white);
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --bg-pattern-dot: var(--color-gray-200);
+
+  /* Text Colors */
+  --text-primary: var(--color-gray-900);
+  --text-secondary: var(--color-gray-600);
+  --text-tertiary: var(--color-gray-400);
+  --text-inverse: var(--color-white);
+  --text-accent: var(--color-accent-light);
+
+  /* Border Colors */
+  --border-primary: var(--color-gray-200);
+  --border-secondary: var(--color-gray-100);
+  --border-hover: var(--color-gray-300);
+
+  /* Interactive Elements */
+  --btn-primary-bg: var(--color-black);
+  --btn-primary-text: var(--color-white);
+  --btn-primary-hover: var(--color-gray-800);
+  --btn-secondary-bg: var(--color-gray-100);
+  --btn-secondary-text: var(--color-gray-900);
+  --btn-secondary-hover: var(--color-gray-200);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* Card/Surface Colors */
+  --card-bg: var(--color-white);
+  --card-bg-hover: var(--color-gray-50);
+  --card-border: var(--color-gray-200);
+
+  /* Navbar */
+  --navbar-bg: rgba(255, 255, 255, 0.8);
+  --navbar-bg-scrolled: rgba(255, 255, 255, 0.9);
+  --navbar-border: rgba(229, 229, 229, 0.5);
+
+  /* Selection */
+  --selection-bg: var(--color-black);
+  --selection-text: var(--color-white);
+
+  /* Gradient tokens */
+  --gradient-text-from: var(--color-gray-500);
+  --gradient-text-via: var(--color-gray-800);
+  --gradient-text-to: var(--color-black);
+
+  /* Status Colors */
+  --status-available: var(--color-success);
+  --status-available-bg: rgba(34, 197, 94, 0.1);
+}
+
+/* === Dark Theme Overrides === */
+[data-theme='dark'] {
+  /* Backgrounds */
+  --bg-primary: var(--color-gray-950);
+  --bg-secondary: var(--color-gray-900);
+  --bg-tertiary: var(--color-gray-800);
+  --bg-elevated: var(--color-gray-900);
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  --bg-pattern-dot: var(--color-gray-800);
+
+  /* Text Colors */
+  --text-primary: var(--color-gray-50);
+  --text-secondary: var(--color-gray-400);
+  --text-tertiary: var(--color-gray-500);
+  --text-inverse: var(--color-gray-900);
+  --text-accent: var(--color-accent-dark);
+
+  /* Border Colors */
+  --border-primary: var(--color-gray-800);
+  --border-secondary: var(--color-gray-900);
+  --border-hover: var(--color-gray-700);
+
+  /* Interactive Elements */
+  --btn-primary-bg: var(--color-white);
+  --btn-primary-text: var(--color-gray-900);
+  --btn-primary-hover: var(--color-gray-200);
+  --btn-secondary-bg: var(--color-gray-800);
+  --btn-secondary-text: var(--color-gray-100);
+  --btn-secondary-hover: var(--color-gray-700);
+
+  /* Shadows - More subtle in dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  /* Card/Surface Colors */
+  --card-bg: var(--color-gray-900);
+  --card-bg-hover: var(--color-gray-800);
+  --card-border: var(--color-gray-800);
+
+  /* Navbar */
+  --navbar-bg: rgba(10, 10, 10, 0.8);
+  --navbar-bg-scrolled: rgba(23, 23, 23, 0.9);
+  --navbar-border: rgba(38, 38, 38, 0.5);
+
+  /* Selection */
+  --selection-bg: var(--color-white);
+  --selection-text: var(--color-black);
+
+  /* Gradient tokens */
+  --gradient-text-from: var(--color-gray-400);
+  --gradient-text-via: var(--color-gray-200);
+  --gradient-text-to: var(--color-white);
+
+  /* Status Colors - Slightly adjusted for dark mode */
+  --status-available: #4ade80;
+  --status-available-bg: rgba(74, 222, 128, 0.15);
+}
+
+/* ============================================
+   TAILWIND CUSTOM THEME UTILITIES
+   ============================================ */
+
 @theme {
   --font-family-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
@@ -23,6 +181,20 @@
     }
   }
 }
+
+/* ============================================
+   BROWSER OVERRIDE PREVENTION
+   Prevents browser auto-dark-mode from breaking colors
+   ============================================ */
+
+html {
+  color-scheme: light dark;
+  forced-color-adjust: none;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* Performance Optimizations */
 * {
@@ -51,10 +223,16 @@ html {
 
 body {
   margin: 0;
-  background-color: #fafafa;
   overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  /* Apply theme tokens */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -64,12 +242,17 @@ body {
   background: transparent;
 }
 
-/* Background Pattern */
+/* Background Pattern - Uses theme tokens */
 body {
-  background-color: #fafafa;
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-image: radial-gradient(var(--bg-pattern-dot) 1px, transparent 1px);
   background-size: 24px 24px;
   background-attachment: fixed;
+}
+
+/* Selection - Uses theme tokens */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 /* Noise Texture Overlay for Visual Depth */
@@ -85,6 +268,10 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+[data-theme='dark'] .bg-noise {
+  opacity: 0.02;
+}
+
 /* Root Container */
 #root {
   display: flex;
@@ -94,9 +281,178 @@ body {
 
 /* Focus Styles for Accessibility */
 :focus-visible {
-  outline: 2px solid #000;
+  outline: 2px solid var(--text-primary);
   outline-offset: 2px;
 }
+
+/* ============================================
+   THEME UTILITY CLASSES
+   These can be used with Tailwind or standalone
+   ============================================ */
+
+/* Background utilities */
+.bg-theme-primary {
+  background-color: var(--bg-primary);
+}
+.bg-theme-secondary {
+  background-color: var(--bg-secondary);
+}
+.bg-theme-tertiary {
+  background-color: var(--bg-tertiary);
+}
+.bg-theme-elevated {
+  background-color: var(--bg-elevated);
+}
+.bg-theme-card {
+  background-color: var(--card-bg);
+}
+.bg-theme-card-hover {
+  background-color: var(--card-bg-hover);
+}
+.bg-theme-navbar {
+  background-color: var(--navbar-bg);
+}
+.bg-theme-navbar-scrolled {
+  background-color: var(--navbar-bg-scrolled);
+}
+
+/* Text utilities */
+.text-theme-primary {
+  color: var(--text-primary);
+}
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+.text-theme-tertiary {
+  color: var(--text-tertiary);
+}
+.text-theme-inverse {
+  color: var(--text-inverse);
+}
+.text-theme-accent {
+  color: var(--text-accent);
+}
+
+/* Border utilities */
+.border-theme-primary {
+  border-color: var(--border-primary);
+}
+.border-theme-secondary {
+  border-color: var(--border-secondary);
+}
+.border-theme-hover {
+  border-color: var(--border-hover);
+}
+.border-theme-card {
+  border-color: var(--card-border);
+}
+.border-theme-navbar {
+  border-color: var(--navbar-border);
+}
+
+/* Button utilities */
+.btn-theme-primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+.btn-theme-primary:hover {
+  background-color: var(--btn-primary-hover);
+}
+.btn-theme-secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+}
+.btn-theme-secondary:hover {
+  background-color: var(--btn-secondary-hover);
+}
+
+/* Shadow utilities */
+.shadow-theme-sm {
+  box-shadow: var(--shadow-sm);
+}
+.shadow-theme-md {
+  box-shadow: var(--shadow-md);
+}
+.shadow-theme-lg {
+  box-shadow: var(--shadow-lg);
+}
+.shadow-theme-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Gradient text utility */
+.gradient-text-theme {
+  background: linear-gradient(
+    to bottom right,
+    var(--gradient-text-from),
+    var(--gradient-text-via),
+    var(--gradient-text-to)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Status badge */
+.status-available {
+  color: var(--status-available);
+}
+.status-available-bg {
+  background-color: var(--status-available-bg);
+}
+
+/* ============================================
+   COMPONENT-SPECIFIC THEME STYLES
+   ============================================ */
+
+/* Card component */
+.card-theme {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-theme:hover {
+  background-color: var(--card-bg-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Navbar component */
+.navbar-theme {
+  background-color: var(--navbar-bg);
+  border-color: var(--navbar-border);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.navbar-theme-scrolled {
+  background-color: var(--navbar-bg-scrolled);
+}
+
+/* Input/Form elements */
+.input-theme {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+}
+
+.input-theme:focus {
+  border-color: var(--text-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input-theme::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
@@ -107,5 +463,18 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-primary: var(--color-gray-400);
+    --border-secondary: var(--color-gray-300);
+  }
+
+  [data-theme='dark'] {
+    --border-primary: var(--color-gray-600);
+    --border-secondary: var(--color-gray-700);
   }
 }
