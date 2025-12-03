@@ -45,12 +45,12 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', size = 'md' }
         ${sizeClasses[size]}
         relative flex items-center justify-center
         rounded-full
-        bg-theme-secondary
-        border border-theme-border
+        bg-theme-tertiary
+        border border-theme-primary
         text-theme-primary
-        hover:bg-theme-tertiary
+        hover:bg-theme-secondary
         transition-colors duration-300
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-accent
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
         ${className}
       `}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -65,7 +65,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', size = 'md' }
             exit={{ rotate: 90, scale: 0, opacity: 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
           >
-            <Sun size={iconSizes[size]} strokeWidth={2} className="text-yellow-500" />
+            <Sun size={iconSizes[size]} strokeWidth={2} className="text-amber-400" />
           </motion.div>
         ) : (
           <motion.div
@@ -75,7 +75,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', size = 'md' }
             exit={{ rotate: -90, scale: 0, opacity: 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
           >
-            <Moon size={iconSizes[size]} strokeWidth={2} className="text-slate-700" />
+            <Moon size={iconSizes[size]} strokeWidth={2} className="text-slate-600" />
           </motion.div>
         )}
       </AnimatePresence>

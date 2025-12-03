@@ -58,16 +58,16 @@ const ScrollProgress: React.FC = () => {
     <>
       {/* Mobile: Horizontal progress bar at the top */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 bg-black origin-left z-[60] md:hidden shadow-sm"
+        className="fixed top-0 left-0 right-0 h-1.5 scroll-progress-bar origin-left z-60 md:hidden"
         style={{ scaleX: smoothProgress }}
         role="progressbar"
         aria-label="Page scroll progress"
       />
       
       {/* Desktop: Vertical progress bar on the right side */}
-      <div className="fixed top-0 right-0 bottom-0 w-3 bg-gray-100/80 z-[60] hidden md:block backdrop-blur-sm border-l border-gray-200">
+      <div className="fixed top-0 right-0 bottom-0 w-2.5 scroll-progress-track z-60 hidden md:block">
         <motion.div
-          className="w-full bg-black origin-top absolute top-0 left-0 right-0"
+          className="w-full scroll-progress-bar origin-top absolute top-0 left-0 right-0"
           style={{ scaleY: smoothProgress, height: '100%' }}
         />
       </div>
@@ -82,7 +82,7 @@ const ScrollProgress: React.FC = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 p-3 bg-black text-white rounded-full shadow-lg hover:shadow-xl transition-shadow border border-gray-800"
+            className="fixed bottom-8 right-8 z-50 p-3 btn-theme-primary rounded-full shadow-theme-lg hover:shadow-theme-xl transition-shadow"
             aria-label="Back to top"
           >
             <ArrowUp size={20} />
