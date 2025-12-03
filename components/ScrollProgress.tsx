@@ -14,17 +14,17 @@ const SCROLL_THRESHOLD = 400;
 /**
  * ScrollProgress Component
  * Displays a scroll progress indicator and a back-to-top button
- * 
+ *
  * @returns The scroll progress indicator and back-to-top button
  */
 const ScrollProgress: React.FC = () => {
   const { scrollYProgress } = useScroll();
-  
+
   // Apply spring physics for smooth filling animation
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -32,7 +32,7 @@ const ScrollProgress: React.FC = () => {
   useEffect(() => {
     // Throttled scroll handler using requestAnimationFrame for performance
     let ticking = false;
-    
+
     const handleScroll = (): void => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -58,16 +58,16 @@ const ScrollProgress: React.FC = () => {
     <>
       {/* Mobile: Horizontal progress bar at the top */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 bg-black origin-left z-[60] md:hidden shadow-sm"
+        className="fixed top-0 left-0 right-0 h-1.5 scroll-progress-bar origin-left z-60 md:hidden"
         style={{ scaleX: smoothProgress }}
         role="progressbar"
         aria-label="Page scroll progress"
       />
-      
+
       {/* Desktop: Vertical progress bar on the right side */}
-      <div className="fixed top-0 right-0 bottom-0 w-3 bg-gray-100/80 z-[60] hidden md:block backdrop-blur-sm border-l border-gray-200">
+      <div className="fixed top-0 right-0 bottom-0 w-2.5 scroll-progress-track z-60 hidden md:block">
         <motion.div
-          className="w-full bg-black origin-top absolute top-0 left-0 right-0"
+          className="w-full scroll-progress-bar origin-top absolute top-0 left-0 right-0"
           style={{ scaleY: smoothProgress, height: '100%' }}
         />
       </div>
@@ -82,7 +82,7 @@ const ScrollProgress: React.FC = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 p-3 bg-black text-white rounded-full shadow-lg hover:shadow-xl transition-shadow border border-gray-800"
+            className="fixed bottom-8 right-8 z-50 p-3 btn-theme-primary rounded-full shadow-theme-lg hover:shadow-theme-xl transition-shadow"
             aria-label="Back to top"
           >
             <ArrowUp size={20} />

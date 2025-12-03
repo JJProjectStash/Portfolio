@@ -92,7 +92,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
           >
             <motion.div
               style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-              className="aspect-[3/4] rounded-[2rem] overflow-hidden relative shadow-2xl border border-gray-200 bg-gray-100"
+              className="aspect-[3/4] rounded-[2rem] overflow-hidden relative shadow-theme-xl border border-theme-primary bg-theme-tertiary"
             >
               {/* Profile/Workspace Image - Place your image at public/images/about-photo.jpg */}
               <img
@@ -119,18 +119,18 @@ const About: React.FC<AboutProps> = ({ id }) => {
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
               style={{ transform: 'translateZ(40px)' }}
-              className="absolute -bottom-8 -right-8 md:-right-12 bg-black text-white p-6 md:p-8 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-gray-800 hidden md:flex flex-col items-start gap-2"
+              className="absolute -bottom-8 -right-8 md:-right-12 btn-theme-primary p-6 md:p-8 rounded-3xl shadow-theme-xl border border-theme-primary hidden md:flex flex-col items-start gap-2"
             >
               <div className="flex items-start">
                 <span className="font-extrabold text-5xl md:text-6xl tracking-tighter leading-none">
                   {personalInfo.experienceYears.replace('+', '')}
                 </span>
-                <span className="text-2xl md:text-3xl font-light text-gray-400 leading-none mt-1">
+                <span className="text-2xl md:text-3xl font-light opacity-60 leading-none mt-1">
                   +
                 </span>
               </div>
-              <div className="h-0.5 w-12 bg-gray-700 my-1"></div>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-widest font-bold">
+              <div className="h-0.5 w-12 bg-theme-primary opacity-30 my-1"></div>
+              <p className="text-xs md:text-sm opacity-80 uppercase tracking-widest font-bold">
                 Years of
                 <br />
                 Experience
@@ -147,21 +147,21 @@ const About: React.FC<AboutProps> = ({ id }) => {
             className="md:col-span-7 space-y-10"
           >
             <div className="space-y-6">
-              <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-black">
+              <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-theme-primary">
                 About Me.
               </h2>
               <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 text-gray-900 font-semibold bg-white/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-gray-200 shadow-sm">
+                <div className="flex items-center gap-2 text-theme-primary font-semibold bg-theme-secondary backdrop-blur-md px-5 py-2.5 rounded-full border border-theme-primary shadow-theme-sm">
                   <MapPin size={18} />
                   <span>{personalInfo.location}</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600 font-medium bg-gray-100/50 px-5 py-2.5 rounded-full border border-gray-200/50">
+                <div className="flex items-center gap-2 text-theme-secondary font-medium bg-theme-tertiary px-5 py-2.5 rounded-full border border-theme-secondary">
                   <span>Information Technology Student</span>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-light">
+            <div className="space-y-6 text-lg text-theme-secondary leading-relaxed font-light">
               {personalInfo.bio.map((paragraph, index) => (
                 <p key={index} className="max-w-2xl">
                   {paragraph}
@@ -176,7 +176,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
                 onClick={() => setShowDownloadToast(true)}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-2xl hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl cursor-pointer"
+                className="group inline-flex items-center gap-3 px-8 py-4 btn-theme-primary font-bold rounded-2xl transition-all shadow-theme-lg hover:shadow-theme-xl cursor-pointer"
               >
                 <Download
                   size={20}
@@ -206,16 +206,16 @@ const About: React.FC<AboutProps> = ({ id }) => {
         {/* Timeline Section */}
         <div className="pt-20">
           <div className="text-center mb-20 space-y-3">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-black tracking-tight">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-theme-primary tracking-tight">
               My Journey
             </h3>
-            <p className="text-gray-500 font-medium">Education & Professional Milestones</p>
+            <p className="text-theme-secondary font-medium">Education & Professional Milestones</p>
           </div>
 
           {/* Timeline Container */}
           <div className="relative max-w-4xl mx-auto">
             {/* Vertical Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 md:-ml-px"></div>
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-theme-primary via-theme-primary to-theme-primary opacity-30 md:-ml-px"></div>
 
             <div className="space-y-16">
               {timeline.map((item, index) => (
@@ -229,7 +229,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
                 >
                   {/* Center Dot */}
                   <motion.div
-                    className={`absolute left-[26px] md:left-1/2 top-0 w-5 h-5 rounded-full bg-white border-[4px] ${index === 0 ? 'border-black scale-110' : 'border-gray-300 group-hover:border-gray-400'} shadow-sm md:-ml-2.5 z-10 transition-all duration-300`}
+                    className={`absolute left-[26px] md:left-1/2 top-0 w-5 h-5 rounded-full bg-theme-secondary border-[4px] ${index === 0 ? 'border-theme-primary scale-110' : 'border-theme-tertiary group-hover:border-theme-secondary'} shadow-theme-sm md:-ml-2.5 z-10 transition-all duration-300`}
                   ></motion.div>
 
                   <div
@@ -240,14 +240,14 @@ const About: React.FC<AboutProps> = ({ id }) => {
                       className={`hidden md:block w-1/2 pt-1 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}
                     >
                       <span
-                        className={`text-xl font-bold ${index === 0 ? 'text-black' : 'text-gray-400'} transition-colors duration-300`}
+                        className={`text-xl font-bold ${index === 0 ? 'text-theme-primary' : 'text-theme-tertiary'} transition-colors duration-300`}
                       >
                         {item.year}
                       </span>
                     </div>
 
                     {/* Mobile Date */}
-                    <div className="md:hidden mb-2 text-sm font-bold text-gray-500">
+                    <div className="md:hidden mb-2 text-sm font-bold text-theme-secondary">
                       {item.year}
                     </div>
 
@@ -255,11 +255,11 @@ const About: React.FC<AboutProps> = ({ id }) => {
                     <div className="md:w-1/2 -mt-2">
                       <motion.div
                         whileHover={{ y: -5 }}
-                        className="bg-white/60 backdrop-blur-lg p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all duration-300"
+                        className="bg-theme-secondary backdrop-blur-lg p-8 rounded-3xl border border-theme-primary shadow-theme-sm hover:shadow-theme-xl hover:border-theme-hover transition-all duration-300"
                       >
                         <div className="flex items-center gap-4 mb-4">
                           <div
-                            className={`p-3.5 ${index === 0 ? 'bg-black text-white shadow-lg' : 'bg-gray-100 text-gray-700'} rounded-2xl transition-colors`}
+                            className={`p-3.5 ${index === 0 ? 'btn-theme-primary shadow-lg' : 'bg-theme-tertiary text-theme-secondary'} rounded-2xl transition-colors`}
                           >
                             {item.type === 'work' ? (
                               <Briefcase size={22} />
@@ -268,12 +268,12 @@ const About: React.FC<AboutProps> = ({ id }) => {
                             )}
                           </div>
                           <div>
-                            <h3 className="font-bold text-xl text-black leading-tight group-hover:underline decoration-2 underline-offset-4 decoration-gray-300 transition-all">
+                            <h3 className="font-bold text-xl text-theme-primary leading-tight group-hover:underline decoration-2 underline-offset-4 decoration-theme-tertiary transition-all">
                               {item.role}
                             </h3>
                           </div>
                         </div>
-                        <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                        <p className="text-theme-secondary leading-relaxed text-sm md:text-base">
                           {item.description}
                         </p>
                       </motion.div>

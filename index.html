@@ -1,8 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Color Scheme - Prevents browser auto-dark mode from breaking colors -->
+    <meta name="color-scheme" content="light dark" />
 
     <!-- Primary Meta Tags -->
     <title>Juztyne Clever Dalupang | MERN Stack Developer Portfolio</title>
@@ -40,9 +43,9 @@
     />
     <meta property="twitter:image" content="/og-image.png" />
 
-    <!-- Theme Color for Mobile Browsers -->
-    <meta name="theme-color" content="#000000" />
-    <meta name="msapplication-TileColor" content="#000000" />
+    <!-- Theme Color for Mobile Browsers - Will be updated by ThemeContext -->
+    <meta name="theme-color" content="#fafafa" />
+    <meta name="msapplication-TileColor" content="#fafafa" />
 
     <!-- Preconnect to External Resources for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -65,7 +68,7 @@
       />
     </noscript>
   </head>
-  <body class="text-gray-900 font-sans antialiased selection:bg-black selection:text-white">
+  <body class="font-sans antialiased">
     <!-- Noise Texture Overlay -->
     <div class="bg-noise" aria-hidden="true"></div>
 

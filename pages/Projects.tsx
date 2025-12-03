@@ -20,14 +20,14 @@ interface ProjectsProps {
  * Displays a loading placeholder while projects are being fetched
  */
 const ProjectSkeleton: React.FC = () => (
-  <div className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden h-full shadow-sm">
-    <div className="aspect-video bg-gray-100 animate-pulse" />
+  <div className="flex flex-col bg-theme-secondary border border-theme-primary rounded-2xl overflow-hidden h-full shadow-theme-sm">
+    <div className="aspect-video bg-theme-tertiary animate-pulse" />
     <div className="p-6 flex-grow space-y-4">
-      <div className="h-7 bg-gray-100 rounded-md w-3/4 animate-pulse" />
+      <div className="h-7 bg-theme-tertiary rounded-md w-3/4 animate-pulse" />
       <div className="space-y-2">
-        <div className="h-4 bg-gray-100 rounded-md w-full animate-pulse" />
-        <div className="h-4 bg-gray-100 rounded-md w-5/6 animate-pulse" />
-        <div className="h-4 bg-gray-100 rounded-md w-4/6 animate-pulse" />
+        <div className="h-4 bg-theme-tertiary rounded-md w-full animate-pulse" />
+        <div className="h-4 bg-theme-tertiary rounded-md w-5/6 animate-pulse" />
+        <div className="h-4 bg-theme-tertiary rounded-md w-4/6 animate-pulse" />
       </div>
     </div>
   </div>
@@ -69,9 +69,11 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
   return (
     <section id={id} className="py-32 relative" aria-label="Projects section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        <div className="space-y-4 border-b border-gray-200/60 pb-10">
-          <h2 className="text-5xl font-extrabold tracking-tighter text-black">Selected Work</h2>
-          <p className="text-lg text-gray-500 max-w-2xl font-light leading-relaxed">
+        <div className="space-y-4 border-b border-theme-primary pb-10">
+          <h2 className="text-5xl font-extrabold tracking-tighter text-theme-primary">
+            Selected Work
+          </h2>
+          <p className="text-lg text-theme-secondary max-w-2xl font-light leading-relaxed">
             A showcase of my recent work, ranging from frontend prototypes to full-stack
             applications. Each project represents a unique challenge and solution.
           </p>
@@ -87,12 +89,12 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex flex-col items-center justify-center py-24 text-center space-y-4 bg-white/60 backdrop-blur-md rounded-3xl border border-gray-200 border-dashed"
+            className="flex flex-col items-center justify-center py-24 text-center space-y-4 bg-theme-secondary backdrop-blur-md rounded-3xl border border-theme-primary border-dashed"
           >
-            <div className="p-4 bg-gray-50 rounded-full shadow-sm">
-              <Search className="w-8 h-8 text-gray-400" />
+            <div className="p-4 bg-theme-tertiary rounded-full shadow-theme-sm">
+              <Search className="w-8 h-8 text-theme-tertiary" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900">No Projects Found</h3>
+            <h3 className="text-xl font-bold text-theme-primary">No Projects Found</h3>
           </motion.div>
         ) : (
           <motion.div
@@ -106,13 +108,13 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
               <motion.div
                 key={project.id}
                 variants={itemVariants}
-                className="group flex flex-col bg-white/40 backdrop-blur-md border border-white/60 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:border-white/80 transition-all duration-500 relative"
+                className="group flex flex-col bg-theme-secondary backdrop-blur-md border border-theme-primary rounded-[2rem] overflow-hidden shadow-theme-sm hover:shadow-theme-xl hover:border-theme-hover transition-all duration-500 relative"
               >
                 {/* Subtle White Glow on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/0 to-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10"></div>
 
                 {/* Project Image Area with Optimization */}
-                <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100 relative z-0">
+                <div className="aspect-[16/10] w-full overflow-hidden bg-theme-tertiary relative z-0">
                   <img
                     src={project.imageUrl}
                     alt={project.title}
@@ -134,7 +136,7 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 bg-white text-black rounded-full shadow-xl flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                        className="w-12 h-12 bg-theme-secondary text-theme-primary rounded-full shadow-theme-xl flex items-center justify-center hover:btn-theme-primary transition-colors"
                       >
                         <ArrowUpRight size={20} />
                       </a>
@@ -145,15 +147,15 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                 {/* Project Content */}
                 <div className="flex flex-col flex-grow p-8 relative z-10">
                   <div className="mb-6 space-y-2">
-                    <h3 className="text-2xl font-bold text-black tracking-tight">
+                    <h3 className="text-2xl font-bold text-theme-primary tracking-tight">
                       {project.title}
                     </h3>
-                    <div className="h-0.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-black w-0 group-hover:w-full transition-all duration-700 ease-in-out"></div>
+                    <div className="h-0.5 w-full bg-theme-tertiary rounded-full overflow-hidden">
+                      <div className="h-full btn-theme-primary w-0 group-hover:w-full transition-all duration-700 ease-in-out"></div>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-8 flex-grow text-base leading-relaxed font-light">
+                  <p className="text-theme-secondary mb-8 flex-grow text-base leading-relaxed font-light">
                     {project.description}
                   </p>
 
@@ -162,7 +164,7 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold bg-white border border-gray-200 rounded-full text-gray-500 group-hover:border-gray-300 transition-colors"
+                        className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold bg-theme-secondary border border-theme-primary rounded-full text-theme-secondary group-hover:border-theme-hover transition-colors"
                       >
                         {tech}
                       </span>
@@ -170,13 +172,13 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                   </div>
 
                   {/* Links */}
-                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-100/50">
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-theme-secondary">
                     {project.demoUrl && (
                       <a
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm font-bold text-black hover:text-gray-600 transition-colors"
+                        className="flex items-center gap-2 text-sm font-bold text-theme-primary hover:text-theme-secondary transition-colors"
                       >
                         <ExternalLink size={16} /> Live Preview
                       </a>
@@ -186,7 +188,7 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
                         href={project.repoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-black transition-colors ml-auto"
+                        className="flex items-center gap-2 text-sm font-bold text-theme-tertiary hover:text-theme-primary transition-colors ml-auto"
                       >
                         <Github size={16} /> Source Code
                       </a>

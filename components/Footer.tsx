@@ -19,7 +19,8 @@ interface SocialLinkProps {
 }
 
 const SocialLink: React.FC<SocialLinkProps> = ({ href, label, hoverClass, children }) => {
-  const baseClasses = 'p-2 bg-gray-100 rounded-full text-gray-500 transition-all duration-300';
+  const baseClasses =
+    'p-2 bg-theme-tertiary rounded-full text-theme-secondary transition-all duration-300';
 
   // If no href, render as disabled span
   if (!href) {
@@ -57,18 +58,16 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white/90 border-t border-gray-200 py-12 mt-auto backdrop-blur-sm">
+    <footer className="bg-theme-secondary border-t border-theme-primary py-12 mt-auto backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Brand & Copyright */}
           <div className="text-center md:text-left flex flex-col items-center md:items-start gap-2">
-            <div className="text-xl font-bold tracking-tighter text-black flex items-center gap-2">
-              <span className="bg-black text-white px-2 py-1 rounded-md text-sm shadow-sm">
-                DEV
-              </span>
+            <div className="text-xl font-bold tracking-tighter text-theme-primary flex items-center gap-2">
+              <span className="btn-theme-primary px-2 py-1 rounded-md text-sm shadow-sm">DEV</span>
               <span>PORTFOLIO</span>
             </div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-theme-secondary">
               © {currentYear} {personalInfo.name}. Built with React & Tailwind.
             </p>
           </div>
@@ -105,7 +104,7 @@ const Footer: React.FC = () => {
             </SocialLink>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="p-2 bg-gray-100 rounded-full text-gray-500 hover:text-white hover:bg-red-500 transition-all duration-300"
+              className="p-2 bg-theme-tertiary rounded-full text-theme-secondary hover:text-white hover:bg-red-500 transition-all duration-300"
               aria-label="Send email"
             >
               <Mail size={20} />
