@@ -171,14 +171,14 @@ export const skillsData = [
  */
 export const timeline = [
   {
-    year: '2023 - Present',
+    year: '2024 - Present',
     role: 'Freelance Software Developer',
     description:
       'Developing custom web solutions for local clients, specializing in MERN stack applications for community services including Barangay management systems.',
     type: 'work',
   },
   {
-    year: '2023 - Present',
+    year: '2024 - Present',
     role: 'Quezon City University',
     description:
       'Pursuing a Bachelor of Science in Information Technology with a focus on software engineering and web technologies.',
