@@ -50,13 +50,13 @@ const Skills: React.FC<SkillsProps> = ({ id }) => {
   };
 
   return (
-    <section id={id} className="py-32 relative" aria-label="Skills section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        <div className="space-y-4 border-b border-theme-primary pb-10">
-          <h2 className="text-5xl font-extrabold tracking-tighter text-theme-primary">
+    <section id={id} className="py-16 sm:py-24 md:py-32 relative" aria-label="Skills section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 md:space-y-16">
+        <div className="space-y-4 border-b border-theme-primary pb-6 sm:pb-8 md:pb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-theme-primary">
             Skills & Expertise
           </h2>
-          <p className="text-lg text-theme-secondary max-w-2xl font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-theme-secondary max-w-2xl font-light leading-relaxed">
             My technical toolkit and the technologies I use to build scalable digital products. I am
             constantly learning and expanding my stack.
           </p>
@@ -74,9 +74,9 @@ const Skills: React.FC<SkillsProps> = ({ id }) => {
               key={set.category}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              className="group p-10 bg-theme-secondary backdrop-blur-md border border-theme-primary rounded-[2rem] shadow-theme-sm hover:shadow-theme-xl hover:border-theme-hover transition-all duration-500 flex flex-col h-full"
+              className="group p-6 sm:p-8 md:p-10 bg-theme-secondary backdrop-blur-md border border-theme-primary rounded-2xl sm:rounded-[2rem] shadow-theme-sm hover:shadow-theme-xl hover:border-theme-hover transition-all duration-500 flex flex-col h-full"
             >
-              <div className="flex items-start gap-6 mb-10">
+              <div className="flex items-start gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10">
                 <motion.div
                   whileHover={{ rotate: 180, scale: 1.1 }}
                   transition={{ duration: 0.4 }}
@@ -85,7 +85,7 @@ const Skills: React.FC<SkillsProps> = ({ id }) => {
                   {iconMap[set.iconName]}
                 </motion.div>
                 <div>
-                  <h3 className="text-2xl font-bold text-theme-primary mb-2 tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold text-theme-primary mb-2 tracking-tight">
                     {set.category}
                   </h3>
                   <p className="text-sm text-theme-secondary leading-relaxed font-light">

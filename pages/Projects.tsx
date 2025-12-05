@@ -67,13 +67,13 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
   };
 
   return (
-    <section id={id} className="py-32 relative" aria-label="Projects section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        <div className="space-y-4 border-b border-theme-primary pb-10">
-          <h2 className="text-5xl font-extrabold tracking-tighter text-theme-primary">
+    <section id={id} className="py-16 sm:py-24 md:py-32 relative" aria-label="Projects section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 md:space-y-16">
+        <div className="space-y-4 border-b border-theme-primary pb-6 sm:pb-8 md:pb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-theme-primary">
             Selected Work
           </h2>
-          <p className="text-lg text-theme-secondary max-w-2xl font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-theme-secondary max-w-2xl font-light leading-relaxed">
             A showcase of my recent work, ranging from frontend prototypes to full-stack
             applications. Each project represents a unique challenge and solution.
           </p>

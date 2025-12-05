@@ -90,7 +90,7 @@ const Home: React.FC<HomeProps> = ({ id }) => {
 
               {/* Main Heading */}
               <div className="relative pb-2">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-theme-primary leading-[1.05]">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-theme-primary leading-[1.05]">
                   <motion.span custom={1} variants={textVariants} className="block">
                     Designing the
                   </motion.span>
@@ -108,7 +108,7 @@ const Home: React.FC<HomeProps> = ({ id }) => {
               <motion.p
                 custom={3}
                 variants={textVariants}
-                className="text-lg md:text-xl text-theme-secondary max-w-lg leading-relaxed mx-auto md:mx-0 font-light"
+                className="text-base sm:text-lg md:text-xl text-theme-secondary max-w-lg leading-relaxed mx-auto md:mx-0 font-light px-2 sm:px-0"
               >
                 Hi, I'm{' '}
                 <span className="text-theme-primary font-semibold">{personalInfo.name}</span>. A{' '}
@@ -122,13 +122,13 @@ const Home: React.FC<HomeProps> = ({ id }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4 px-4 sm:px-0"
             >
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToProjects}
-                className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 btn-theme-primary font-bold rounded-2xl transition-all shadow-theme-lg hover:shadow-theme-xl"
+                className="w-full sm:w-auto group flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 btn-theme-primary font-bold rounded-xl sm:rounded-2xl transition-all shadow-theme-lg hover:shadow-theme-xl text-sm sm:text-base"
               >
                 View My Work
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -137,7 +137,7 @@ const Home: React.FC<HomeProps> = ({ id }) => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToContact}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-theme-secondary backdrop-blur-md border border-theme-primary text-theme-primary font-bold rounded-2xl hover:bg-theme-tertiary hover:border-theme-hover transition-all shadow-theme-sm hover:shadow-theme-md"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-theme-secondary backdrop-blur-md border border-theme-primary text-theme-primary font-bold rounded-xl sm:rounded-2xl hover:bg-theme-tertiary hover:border-theme-hover transition-all shadow-theme-sm hover:shadow-theme-md text-sm sm:text-base"
               >
                 Contact Me
               </motion.button>

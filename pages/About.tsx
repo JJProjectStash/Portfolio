@@ -76,10 +76,10 @@ const About: React.FC<AboutProps> = ({ id }) => {
   };
 
   return (
-    <section id={id} className="py-32 relative overflow-hidden" aria-label="About section">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+    <section id={id} className="py-16 sm:py-24 md:py-32 relative overflow-hidden" aria-label="About section">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20 md:space-y-24">
         {/* Intro Section */}
-        <div className="grid md:grid-cols-12 gap-16 items-center">
+        <div className="grid md:grid-cols-12 gap-8 sm:gap-12 md:gap-16 items-center">
           {/* Image with 3D Tilt & Enhanced Badge */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -148,7 +148,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
             className="md:col-span-7 space-y-10"
           >
             <div className="space-y-6">
-              <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-theme-primary">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter text-theme-primary">
                 About Me.
               </h2>
               <div className="flex flex-wrap items-center gap-3">
@@ -162,7 +162,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
               </div>
             </div>
 
-            <div className="space-y-6 text-lg text-theme-secondary leading-relaxed font-light">
+            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-theme-secondary leading-relaxed font-light">
               {personalInfo.bio.map((paragraph, index) => (
                 <p key={index} className="max-w-2xl">
                   {paragraph}

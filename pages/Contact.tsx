@@ -129,31 +129,31 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
   };
 
   return (
-    <section id={id} className="py-32 relative" aria-label="Contact section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <section id={id} className="py-16 sm:py-24 md:py-32 relative" aria-label="Contact section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 md:space-y-16">
         <div className="text-center max-w-2xl mx-auto space-y-4 pb-4">
-          <h2 className="text-5xl font-extrabold tracking-tighter text-theme-primary">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-theme-primary">
             Get in Touch
           </h2>
-          <p className="text-lg text-theme-secondary font-light">
+          <p className="text-base sm:text-lg text-theme-secondary font-light">
             Interested in working together? I'm always open to discussing new projects, creative
             ideas or opportunities to be part of your visions.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-start">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-10 bg-theme-secondary backdrop-blur-md p-10 rounded-[2.5rem] border border-theme-primary shadow-theme-sm h-full flex flex-col justify-between"
+            className="space-y-6 sm:space-y-10 bg-theme-secondary backdrop-blur-md p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] border border-theme-primary shadow-theme-sm h-full flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-3xl font-bold text-theme-primary mb-6 tracking-tight">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-theme-primary mb-4 sm:mb-6 tracking-tight">
                 Let's talk about everything!
               </h3>
-              <p className="text-theme-secondary mb-10 leading-relaxed font-light">
+              <p className="text-theme-secondary mb-6 sm:mb-10 leading-relaxed font-light text-sm sm:text-base">
                 I am currently open to internship opportunities, freelance projects, and open-source
                 collaborations. Feel free to reach out via the form or my direct channels.
               </p>
@@ -237,7 +237,7 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative bg-theme-secondary backdrop-blur-xl p-10 rounded-[2.5rem] border border-theme-primary shadow-theme-xl overflow-hidden"
+            className="relative bg-theme-secondary backdrop-blur-xl p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] border border-theme-primary shadow-theme-xl overflow-hidden"
           >
             <AnimatePresence>
               {status === 'success' && (
