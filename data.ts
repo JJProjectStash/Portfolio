@@ -40,9 +40,9 @@ export const personalInfo = {
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'FastLinks - URL Shortener',
+    title: 'EcoCycle Talipapa - Barangay Recycling & Management System',
     description:
-      'A lightweight MERN-based URL shortening service that generates clean, shareable links with quick and reliable redirects. Includes link analytics, simple management tools, and a fast, minimalist interface.',
+      'A full MERN stack platform that manages barangay operations while promoting sustainability through a recycling barter program. Residents can exchange recyclable materials for points and redeem them for eco-friendly items such as bags, rugs, or soil—encouraging environmental responsibility at the community level.',
     technologies: [
       'TypeScript',
       'React',
@@ -51,18 +51,18 @@ export const projects: Project[] = [
       'MongoDB',
       'Vite',
       'Tailwind CSS',
-      'Cloudflare',
+      'Vercel',
       'Render',
+      'AWS S3',
     ],
-    imageUrl: '/images/fastlinks.jpg',
-    demoUrl: 'https://fastlinks.clev.studio',
-    repoUrl: 'https://github.com/jjProjectStash/url-shortener',
+    imageUrl: '/images/ecocycle.jpg',
+    demoUrl: 'https://www.ecocycletalipapa.com',
   },
   {
     id: 2,
-    title: 'iBarangay - Barangay E-Services Platform',
+    title: 'Kore - E-Commerce Platform',
     description:
-      'A web platform that digitizes essential barangay services, enabling residents to request documents, submit concerns, and access public information online. Features include resident records, request processing, and an admin dashboard for efficient local governance.',
+      'A web platform that digitizes essential e-commerce services, enabling customers to purchase products and services online.',
     technologies: [
       'TypeScript',
       'React',
@@ -74,9 +74,9 @@ export const projects: Project[] = [
       'Cloudflare',
       'Render',
     ],
-    imageUrl: '/images/ibarangayimg.jpg',
-    demoUrl: 'https://ibarangay.clev.studio',
-    repoUrl: 'https://github.com/jjProjectStash/aibarangay',
+    imageUrl: '/images/kore.jpg',
+    demoUrl: 'https://kore.clev.studio',
+    repoUrl: 'https://github.com/Calliduz/kore',
   },
   {
     id: 3,
@@ -100,9 +100,9 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'EcoCycle Talipapa - Barangay Recycling & Management System',
+    title: 'FastLinks - URL Shortener',
     description:
-      'A full MERN stack platform that manages barangay operations while promoting sustainability through a recycling barter program. Residents can exchange recyclable materials for points and redeem them for eco-friendly items such as bags, rugs, or soil—encouraging environmental responsibility at the community level.',
+      'A lightweight MERN-based URL shortening service that generates clean, shareable links with quick and reliable redirects. Includes link analytics, simple management tools, and a fast, minimalist interface.',
     technologies: [
       'TypeScript',
       'React',
@@ -111,12 +111,12 @@ export const projects: Project[] = [
       'MongoDB',
       'Vite',
       'Tailwind CSS',
-      'Vercel',
+      'Cloudflare',
       'Render',
-      'AWS S3',
     ],
-    imageUrl: '/images/ecocycle.jpg',
-    demoUrl: 'https://www.ecocycletalipapa.com',
+    imageUrl: '/images/fastlinks.jpg',
+    demoUrl: 'https://fastlinks.clev.studio',
+    repoUrl: 'https://github.com/jjProjectStash/url-shortener',
   },
   {
     id: 5,
@@ -137,6 +137,26 @@ export const projects: Project[] = [
     demoUrl: 'https://mindflip.clev.studio',
     repoUrl: 'https://github.com/Calliduz/mindflip',
     imageUrl: '/images/mindflipss.jpg',
+  },
+  {
+    id: 6,
+    title: 'iBarangay - Barangay E-Services Platform',
+    description:
+      'A web platform that digitizes essential barangay services, enabling residents to request documents, submit concerns, and access public information online. Features include resident records, request processing, and an admin dashboard for efficient local governance.',
+    technologies: [
+      'TypeScript',
+      'React',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Vite',
+      'Tailwind CSS',
+      'Cloudflare',
+      'Render',
+    ],
+    imageUrl: '/images/ibarangayimg.jpg',
+    demoUrl: 'https://ibarangay.clev.studio',
+    repoUrl: 'https://github.com/jjProjectStash/aibarangay',
   },
 ];
 
