@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: 2,
     title: 'Kore - E-Commerce Platform',
     description:
-      'A web platform that digitizes essential e-commerce services, enabling customers to purchase products and services online.',
+      'A e-commerce web platform that has e-commerce functionalities such as add to cart, wishlists, search and filter that will enhance the shopping experience of your customers, it has a payment gateway functionality which allows customers to pay online via e-wallet or credit/debit cards.',
     technologies: [
       'TypeScript',
       'React',
