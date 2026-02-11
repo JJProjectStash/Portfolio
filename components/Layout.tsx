@@ -17,7 +17,7 @@ interface LayoutProps {
 /**
  * Layout Component
  * Provides the main structure for the portfolio including navigation and footer
- * 
+ *
  * @param props - Component props
  * @param props.children - Child components to render in the main content area
  * @returns The layout wrapper with navigation, content, and footer
@@ -27,15 +27,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       {/* Scroll progress indicator */}
       <ScrollProgress />
-      
+
       {/* Navigation bar */}
       <Navbar />
-      
+
       {/* Main content area - transparent background to show index.html pattern */}
-      <main className="flex-grow w-full flex flex-col relative z-0">
-        {children}
-      </main>
-      
+      <main className="flex-grow w-full flex flex-col relative z-0">{children}</main>
+
       {/* Footer */}
       <Footer />
     </>

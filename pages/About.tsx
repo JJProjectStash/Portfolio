@@ -76,7 +76,11 @@ const About: React.FC<AboutProps> = ({ id }) => {
   };
 
   return (
-    <section id={id} className="py-16 sm:py-24 md:py-32 relative overflow-hidden" aria-label="About section">
+    <section
+      id={id}
+      className="py-16 sm:py-24 md:py-32 relative overflow-hidden"
+      aria-label="About section"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20 md:space-y-24">
         {/* Intro Section */}
         <div className="grid md:grid-cols-12 gap-8 sm:gap-12 md:gap-16 items-center">

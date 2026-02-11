@@ -158,6 +158,17 @@ export const projects: Project[] = [
     demoUrl: 'https://ibarangay.clev.studio',
     repoUrl: 'https://github.com/jjProjectStash/aibarangay',
   },
+
+  {
+    id: 7,
+    title: 'IronPulse - Gym Membership Frontend',
+    description:
+      'A frontend webpage for a gym membership website that has a responsive design and a modern user interface.',
+    technologies: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Cloudflare'],
+    imageUrl: '/images/ironfitness.jpg',
+    demoUrl: 'https://fitness.clev.studio',
+    repoUrl: 'https://github.com/Calliduz/ironpulse-fitness',
+  },
 ];
 
 /**

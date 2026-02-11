@@ -75,7 +75,6 @@ const getEventIcon = (type: string): React.ReactNode => {
   }
 };
 
-
 /**
  * GitHub Activity Component
  * Displays recent GitHub activity and stats

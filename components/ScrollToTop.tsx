@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 /**
  * ScrollToTop Component
  * Automatically scrolls to the top of the page when the route changes
- * 
+ *
  * @returns null - This component doesn't render any visible UI
  */
 const ScrollToTop: React.FC = () => {

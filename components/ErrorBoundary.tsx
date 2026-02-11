@@ -25,7 +25,7 @@ interface ErrorBoundaryState {
 /**
  * Error Boundary Component
  * Catches JavaScript errors in child components and displays fallback UI
- * 
+ *
  * @example
  * <ErrorBoundary>
  *   <MyComponent />
@@ -54,7 +54,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     // Log error to console in development
     console.error('ErrorBoundary caught an error:', error);
     console.error('Component stack:', errorInfo.componentStack);
-    
+
     // In production, you could send this to an error reporting service
     // Example: errorReportingService.log({ error, errorInfo });
   }
@@ -87,15 +87,16 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <AlertTriangle className="w-10 h-10 text-gray-600" strokeWidth={1.5} />
             </div>
-            
+
             <h1 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">
               Something went wrong
             </h1>
-            
+
             <p className="text-gray-500 mb-8 leading-relaxed">
-              An unexpected error occurred. Please try refreshing the page or click the button below to try again.
+              An unexpected error occurred. Please try refreshing the page or click the button below
+              to try again.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={this.handleReset}
@@ -103,7 +104,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               >
                 Try Again
               </button>
-              
+
               <button
                 onClick={this.handleReload}
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-black text-white font-semibold rounded-xl hover:bg-gray-900 transition-colors"
@@ -112,7 +113,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
                 Reload Page
               </button>
             </div>
-            
+
             {/* Show error details in development */}
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="mt-8 text-left">
