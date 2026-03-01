@@ -169,6 +169,15 @@ export const projects: Project[] = [
     demoUrl: 'https://fitness.clev.studio',
     repoUrl: 'https://github.com/Calliduz/ironpulse-fitness',
   },
+  {
+    id: 8,
+    title: 'HCI - Fundamentals of Programming Comp',
+    description: 'A super basic compilation of programming fundamentals, no design is used.',
+    technologies: ['Html', 'CSS', 'JavaScript'],
+    imageUrl: '/images/compilation.jpg',
+    demoUrl: 'https://hci.clev.studio',
+    repoUrl: 'https://github.com/Calliduz/dalupangHCI',
+  },
 ];
 
 /**
