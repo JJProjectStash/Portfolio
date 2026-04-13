@@ -60,6 +60,26 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    title: 'Kaizoku - Anime Streaming Client',
+    description:
+      'A web-scraping anime streaming platform that dynamically fetches content on-demand using headless browsers. It bypasses anti-bot measures and utilizes an optimized scraping backend to provide users with a seamless, lightweight streaming experience.',
+    technologies: [
+      'TypeScript',
+      'React',
+      'Node.js',
+      'Express',
+      'Puppeteer',
+      'Vite',
+      'Tailwind CSS',
+      'Render',
+      'Cloudflare',
+    ],
+    imageUrl: '/images/kaizoku.jpg',
+    demoUrl: 'https://kaizoku.clev.studio',
+    repoUrl: 'https://github.com/Calliduz/kaizoku-client',
+  },
+  {
+    id: 3,
     title: 'Kore - E-Commerce Platform',
     description:
       'A e-commerce web platform that has e-commerce functionalities such as add to cart, wishlists, search and filter that will enhance the shopping experience of your customers, it has a payment gateway functionality which allows customers to pay online via e-wallet or credit/debit cards.',
@@ -79,7 +99,7 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/Calliduz/kore',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Notified - Student Attendance & Communication System',
     description:
       'A school-focused management system that tracks student attendance and automatically emails parents or guardians about absences, tardiness, and excused entries. Designed to improve transparency, timely updates, and school-home communication.',
@@ -99,7 +119,7 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/jjProjectStash/notified',
   },
   {
-    id: 4,
+    id: 5,
     title: 'FastLinks - URL Shortener',
     description:
       'A lightweight MERN-based URL shortening service that generates clean, shareable links with quick and reliable redirects. Includes link analytics, simple management tools, and a fast, minimalist interface.',
@@ -119,7 +139,7 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/jjProjectStash/url-shortener',
   },
   {
-    id: 5,
+    id: 6,
     title: 'MindFlip - Memory Matching Game',
     description:
       'MindFlip is a playful memory-matching game where players flip cards, discover hidden icons, and race to pair everything up as quickly as possible. With smooth transitions, randomized boards, and simple but addictive mechanics, the game offers a casual challenge that strengthens recall and observation skills while providing a fun, lightweight gaming experience on any device.',
@@ -139,7 +159,7 @@ export const projects: Project[] = [
     imageUrl: '/images/mindflipss.jpg',
   },
   {
-    id: 6,
+    id: 7,
     title: 'iBarangay - Barangay E-Services Platform',
     description:
       'A web platform that digitizes essential barangay services, enabling residents to request documents, submit concerns, and access public information online. Features include resident records, request processing, and an admin dashboard for efficient local governance.',
@@ -160,7 +180,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: 7,
+    id: 8,
     title: 'IronPulse - Gym Membership Frontend',
     description:
       'A frontend webpage for a gym membership website that has a responsive design and a modern user interface.',
@@ -170,7 +190,7 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/Calliduz/ironpulse-fitness',
   },
   {
-    id: 8,
+    id: 9,
     title: 'HCI - Fundamentals of Programming Comp',
     description: 'A super basic compilation of programming fundamentals, no design is used.',
     technologies: ['Html', 'CSS', 'JavaScript'],
