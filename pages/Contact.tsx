@@ -210,24 +210,21 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
                 </div>
 
                 {/* Quick CV Download */}
-                <motion.a
-                  whileHover={{ x: 5 }}
-                  href="/Trimmed CV.pdf"
-                  download="Juztyne_Clever_Dalupang_CV.pdf"
-                  className="flex items-center gap-5 group p-5 rounded-3xl transition-all border border-transparent hover:border-theme-primary hover:shadow-theme-sm hover:bg-theme-tertiary"
+                <div
+                  className="flex items-center gap-5 p-5 rounded-3xl border border-transparent opacity-50 cursor-not-allowed select-none"
                 >
-                  <div className="p-4 bg-theme-secondary text-theme-primary border border-theme-primary rounded-2xl shadow-theme-sm group-hover:btn-theme-primary transition-colors duration-300">
+                  <div className="p-4 bg-theme-secondary text-theme-tertiary border border-theme-primary rounded-2xl shadow-theme-sm">
                     <FileText className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="font-bold text-theme-primary text-sm uppercase tracking-wider mb-1">
+                    <p className="font-bold text-theme-tertiary text-sm uppercase tracking-wider mb-1">
                       Curriculum Vitae
                     </p>
-                    <span className="text-theme-secondary text-lg font-medium group-hover:text-theme-primary transition-colors flex items-center gap-2">
+                    <span className="text-theme-tertiary text-lg font-medium flex items-center gap-2">
                       Download CV <Download size={16} className="opacity-60" />
                     </span>
                   </div>
-                </motion.a>
+                </div>
               </div>
             </div>
           </motion.div>

@@ -175,20 +175,13 @@ const About: React.FC<AboutProps> = ({ id }) => {
             </div>
 
             <div className="pt-6 relative">
-              <motion.a
-                href={CV_FILE_PATH}
-                download={CV_FILE_NAME}
-                onClick={() => setShowDownloadToast(true)}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group inline-flex items-center gap-3 px-8 py-4 btn-theme-primary font-bold rounded-2xl transition-all shadow-theme-lg hover:shadow-theme-xl cursor-pointer"
+              <button
+                disabled
+                className="inline-flex items-center gap-3 px-8 py-4 bg-theme-tertiary text-theme-tertiary font-bold rounded-2xl border border-theme-primary opacity-60 cursor-not-allowed select-none"
               >
-                <Download
-                  size={20}
-                  className="group-hover:translate-y-1 transition-transform duration-300"
-                />
+                <Download size={20} />
                 <span>Download CV</span>
-              </motion.a>
+              </button>
 
               {/* Download Success Toast */}
               <AnimatePresence>
